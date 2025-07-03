@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R Programming Unit-3 Notes</title>
+    <link rel="stylesheet" href="unit.css">
+        <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1> Lists</h1>
+        <p>Comprehensive Notes with Examples for Examination</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#part-a">Part A: Short Answer Questions</a></li>
+            <li><a href="#part-b">Part B: Long Answer Questions</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="part-a">
+            <h2>Part A: Short Answer Questions</h2>
+            <div class="question">
+                <h3>1. Define the list. Give an examples.</h3>
+                <p>A <strong>list</strong> in R is a versatile data structure that can store elements of different types (e.g., numeric, character, logical, or even other lists). Unlike vectors, lists can hold heterogeneous data.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>my_list <- list(name = "Alice", age = 25, scores = c(90, 85, 88))
+print(my_list)
+# Output:
+# $name
+# [1] "Alice"
+# $age
+# [1] 25
+# $scores
+# [1] 90 85 88</code></pre>
+            </div>
+            <div class="question">
+                <h3>2. How to create the list in R programming?</h3>
+                <p>Lists are created using the <code>list()</code> function, where elements can be named or unnamed.</p>
+                <ul>
+                    <li><strong>Syntax</strong>: <code>list(name1 = value1, name2 = value2, ...)</code></li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code># Named list
+student <- list(name = "Bob", age = 30, active = TRUE)
+print(student)
+# Unnamed list
+simple_list <- list(1, "hello", TRUE)
+print(simple_list)
+# Output:
+# $name
+# [1] "Bob"
+# $age
+# [1] 30
+# $active
+# [1] TRUE
+#
+# [[1]]
+# [1] 1
+# [[2]]
+# [1] "hello"
+# [[3]]
+# [1] TRUE</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>3. Write about list indexing adding and deleting list elements in R programming?</h3>
+                <ul>
+                    <li><strong>Indexing</strong>:
+                        <ul>
+                            <li>Use <code>[[]]</code> to access a single element (returns the element itself).</li>
+                            <li>Use <code>[]</code> to return a sublist.</li>
+                            <li>Use <code>$</code> for named elements.</li>
+                            <li>Example:<br>
+                                <pre><code>my_list <- list(name = "Alice", age = 25)
+print(my_list[["name"]])  # Outputs "Alice"
+print(my_list$age)        # Outputs 25
+print(my_list[1])         # Outputs sublist: $name [1] "Alice"</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Adding Elements</strong>:
+                        <ul>
+                            <li>Use <code>[[index]]</code> or <code>$name</code> to add new elements.</li>
+                            <li>Example:<br>
+                                <pre><code>my_list$new_element <- "new"
+print(my_list)  # Adds $new_element with "new"</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Deleting Elements</strong>:
+                        <ul>
+                            <li>Set elements to <code>NULL</code> or use negative indexing.</li>
+                            <li>Example:<br>
+                                <pre><code>my_list$age <- NULL
+print(my_list)  # Age is removed</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>4. How to find the size of a list with an example?</h3>
+                <p>The <code>length()</code> function returns the number of top-level elements in a list.</p>
+                <ul>
+                    <li><strong>Syntax</strong>: <code>length(list)</code></li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>my_list <- list(a = 1, b = c(2, 3), c = "hello")
+print(length(my_list))  # Outputs 3</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>5. How to access the list elements from the list give an example?</h3>
+                <p>List elements can be accessed using:</p>
+                <ul>
+                    <li><strong>Double brackets <code>[[]]</code></strong>: Returns the element’s content.</li>
+                    <li><strong>Single brackets <code>[]</code></strong>: Returns a sublist.</li>
+                    <li><strong>Dollar sign <code>$</code></strong>: Access named elements.</li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>my_list <- list(name = "Alice", scores = c(90, 85), active = TRUE)
+print(my_list[[1]])      # Outputs "Alice"
+print(my_list$scores)    # Outputs 90 85
+print(my_list[1:2])      # Outputs sublist with name and scores</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>6. How to create data frames in a R programming?</h3>
+                <p>A data frame is a table-like structure where columns can have different data types.</p>
+                <ul>
+                    <li><strong>Syntax</strong>: <code>data.frame(col1 = values, col2 = values, ...)</code></li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>df <- data.frame(
+  name = c("Alice", "Bob", "Charlie"),
+  age = c(25, 30, 22),
+  score = c(90, 85, 88)
+)
+print(df)
+# Output:
+#      name age score
+# 1   Alice  25    90
+# 2     Bob  30    85
+# 3 Charlie  22    88</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>7. How to create matrix in R programming?</h3>
+                <p>A matrix is a 2D array with elements of the same type, created using <code>matrix()</code>.</p>
+                <ul>
+                    <li><strong>Syntax</strong>: <code>matrix(data, nrow, ncol, byrow = FALSE)</code></li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>mat <- matrix(1:6, nrow = 2, ncol = 3)
+print(mat)
+# Output:
+#      [,1] [,2] [,3]
+# [1,]    1    3    5
+# [2,]    2    4    6</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>8. Write about matrix operations in R programming?</h3>
+                <p>Matrix operations include:</p>
+                <ul>
+                    <li><strong>Arithmetic</strong>: Element-wise addition, subtraction, multiplication, etc.<br>
+                        <pre><code>mat1 <- matrix(1:4, nrow = 2)
+mat2 <- matrix(5:8, nrow = 2)
+print(mat1 + mat2)  # Element-wise addition</code></pre>
+                    </li>
+                    <li><strong>Matrix Multiplication</strong>: Use <code>%*%</code> for matrix multiplication.<br>
+                        <pre><code>print(mat1 %*% t(mat2))  # Matrix multiplication with transpose</code></pre>
+                    </li>
+                    <li><strong>Transpose</strong>: <code>t(matrix)</code> transposes rows and columns.<br>
+                        <pre><code>print(t(mat1))</code></pre>
+                    </li>
+                    <li><strong>Inverse</strong>: <code>solve(matrix)</code> for square matrices.<br>
+                        <pre><code>mat <- matrix(c(1, 2, 3, 4), nrow = 2)
+print(solve(mat))  # Inverse</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>9. How to access the elements from the data frame in R programming?</h3>
+                <p>Data frame elements can be accessed using:</p>
+                <ul>
+                    <li><strong>Column names with <code>$</code></strong>: <code>df$column</code>.</li>
+                    <li><strong>Brackets <code>[row, col]</code></strong>: Specify row and column indices or names.</li>
+                    <li><strong>Double brackets <code>[[]]</code></strong>: Access columns.</li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>df <- data.frame(name = c("Alice", "Bob"), age = c(25, 30))
+print(df$name)          # Outputs "Alice" "Bob"
+print(df[1, 2])         # Outputs 25
+print(df[, "age"])      # Outputs 25 30
+print(df[[2]])          # Outputs 25 30</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>10. How to find the length of the data frame in R programming?</h3>
+                <ul>
+                    <li>Use <code>nrow()</code> for the number of rows.</li>
+                    <li>Use <code>ncol()</code> for the number of columns.</li>
+                    <li>Use <code>dim()</code> for both dimensions.</li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>df <- data.frame(name = c("Alice", "Bob"), age = c(25, 30))
+print(nrow(df))  # Outputs 2
+print(ncol(df))  # Outputs 2
+print(dim(df))   # Outputs 2 2</code></pre>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section id="part-b">
+            <h2>Part B: Long Answer Questions</h2>
+            <div class="question">
+                <h3>11. a) Explain about list operations with examples.</h3>
+                <p>List operations in R include creating, accessing, modifying, and deleting elements:</p>
+                <ul>
+                    <li><strong>Creating</strong>: Use <code>list()</code>.<br>
+                        <pre><code>my_list <- list(a = 1, b = "hello", c = c(2, 3))</code></pre>
+                    </li>
+                    <li><strong>Accessing</strong>: Use <code>[[]]</code>, <code>[]</code>, or <code>$</code>.<br>
+                        <pre><code>print(my_list$a)         # Outputs "hello"
+print(my_list[[3]])      # Outputs 2 3
+print(my_list[1:2])      # Outputs sublist with a and b</code></pre>
+                    </li>
+                    <li><strong>Modifying</strong>: Assign new values to existing or new indices.<br>
+                        <pre><code>my_list$a <- "new_value"
+print(my_list$a)         # Outputs "new_value"</code></pre>
+                    </li>
+                    <li><strong>Adding</strong>: Use <code>$</code> or <code>[[index]]</code>.<br>
+                        <pre><code>my_list$new <- TRUE
+print(my_list$new)       # Outputs TRUE</code></pre>
+                    </li>
+                    <li><strong>Deleting</strong>: Set elements to <code>NULL</code>.<br>
+                        <pre><code>my_list$b <- NULL
+print(my_list)           # b is removed</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>11. b) Write an R program to create a data frame.</h3>
+                <pre><code># Creating a data frame
+students <- data.frame(
+  id = c(101, 102, 103),
+  name = c("Alice", "Bob", "Charlie"),
+  age = c(25, 30, 22),
+  grade = c("A", "B", "A")
+)
+
+# Printing the data frame
+print("Student Data Frame:")
+print(students)
+
+# Output:
+#   id    name age grade
+# 1 101  Alice  25     A
+# 2 102    Bob  30     B
+# 3 103 Charlie  22     A</code></pre>
+            </div>
+            <div class="question">
+                <h3>12. a) Explain about data frame operations in R programming.</h3>
+                <p>Data frame operations include:</p>
+                <ul>
+                    <li><strong>Creating</strong>: Use <code>data.frame()</code>.<br>
+                        <pre><code>df <- data.frame(x = 1:3, y = c("a", "b", "c"))</code></pre>
+                    </li>
+                    <li><strong>Accessing</strong>: Use <code>$</code>, <code>[[]]</code>, or <code>[row, col]</code>.<br>
+                        <pre><code>print(df$y)       # Outputs "a" "b" "c"
+print(df[2, 1])   # Outputs 2</code></pre>
+                    </li>
+                    <li><strong>Adding Columns</strong>: Assign new columns with <code>$</code>.<br>
+                        <pre><code>df$z <- c(4, 5, 6)</code></pre>
+                    </li>
+                    <li><strong>Adding Rows</strong>: Use <code>rbind()</code>.<br>
+                        <pre><code>new_row <- data.frame(x = 4, y = "d", z = 7)
+df <- rbind(df, new_row)</code></pre>
+                    </li>
+                    <li><strong>Deleting</strong>: Use <code>NULL</code> for columns or subsetting for rows.<br>
+                        <pre><code>df$z <- NULL           # Remove column z
+df <- df[-1, ]         # Remove first row</code></pre>
+                    </li>
+                    <li><strong>Filtering</strong>: Subset using logical conditions.<br>
+                        <pre><code>print(df[df$x > 2, ])  # Rows where x > 2</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>12. b) Write an R program to access a data frame like a list.</h3>
+                <pre><code># Creating a data frame
+df <- data.frame(
+  name = c("Alice", "Bob", "Charlie"),
+  age = c(25, 30, 22)
+)
+
+# Accessing like a list
+print("Accessing name column using $:")
+print(df$name)          # Outputs "Alice" "Bob" "Charlie"
+
+print("Accessing age column using [[]]:")
+print(df[["age"]])      # Outputs 25 30 22
+
+print("Accessing first two columns as a sublist:")
+print(df[1:2])          # Outputs name and age columns
+
+print("Accessing first element of name column:")
+print(df$name[1])       # Outputs "Alice"</code></pre>
+            </div>
+            <div class="question">
+                <h3>13. a) Explain about list with data frame give examples.</h3>
+                <p>A list can contain a data frame as one of its elements, allowing complex data organization.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>df <- data.frame(name = c("Alice", "Bob"), age = c(25, 30))
+my_list <- list(student_info = df, course = "Statistics")
+print(my_list)
+# Output:
+# $student_info
+#    name age
+# 1 Alice  25
+# 2   Bob  30
+# $course
+# [1] "Statistics"
+
+# Accessing
+print(my_list$student_info$name)  # Outputs "Alice" "Bob"
+print(my_list[[1]][, "age"])      # Outputs 25 30</code></pre>
+            </div>
+            <div class="question">
+                <h3>13. b) Explain about creating and adding elements to the list give an example.</h3>
+                <ul>
+                    <li><strong>Creating</strong>: Use <code>list()</code> to create a list with named or unnamed elements.<br>
+                        <pre><code>my_list <- list(a = 1, b = "hello")</code></pre>
+                    </li>
+                    <li><strong>Adding Elements</strong>:
+                        <ul>
+                            <li>Use <code>$</code> to add named elements.</li>
+                            <li>Use <code>[[index]]</code> for specific positions.</li>
+                            <li>Use <code>c()</code> to append lists.</li>
+                            <li><strong>Example</strong>:<br>
+                                <pre><code>my_list <- list(a = 1, b = "hello")
+my_list$c <- TRUE          # Add named element
+my_list[[4]] <- c(2, 3)    # Add at index 4
+my_list <- c(my_list, list(d = "new"))  # Append another list
+print(my_list)
+# Output:
+# $a
+# [1] 1
+# $b
+# [1] "hello"
+# $c
+# [1] TRUE
+# [[4]]
+# [1] 2 3
+# $d
+# [1] "new"</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>14. a) How to create the student details by using data frame. With an example.</h3>
+                <p>A data frame can store student details as a table with columns for attributes like ID, name, and grades.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>students <- data.frame(
+  id = c(101, 102, 103),
+  name = c("Alice", "Bob", "Charlie"),
+  age = c(25, 30, 22),
+  grade = c("A", "B", "A")
+)
+print(students)
+# Output:
+#   id    name age grade
+# 1 101  Alice  25     A
+# 2 102    Bob  30     B
+# 3 103 Charlie  22     A</code></pre>
+            </div>
+            <div class="question">
+                <h3>14. b) Explain about accessing and deleting elements from the data frame give an example.</h3>
+                <ul>
+                    <li><strong>Accessing</strong>:
+                        <ul>
+                            <li>Use <code>$</code> for columns.</li>
+                            <li>Use <code>[row, col]</code> for specific elements or subsets.</li>
+                            <li>Use <code>[[]]</code> for columns.</li>
+                            <li>Example:<br>
+                                <pre><code>df <- data.frame(name = c("Alice", "Bob"), age = c(25, 30))
+print(df$name)          # Outputs "Alice" "Bob"
+print(df[1, 2])         # Outputs 25
+print(df[, "age"])      # Outputs 25 30</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Deleting</strong>:
+                        <ul>
+                            <li>Remove columns by setting to <code>NULL</code>.</li>
+                            <li>Remove rows using negative indexing.</li>
+                            <li>Example:<br>
+                                <pre><code>df$age <- NULL          # Remove age column
+print(df)               # Outputs only name column
+df <- df[-1, ]          # Remove first row
+print(df)               # Outputs only Bob's row</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>15. a) How to convert list to matrix in R programming.</h3>
+                <p>To convert a list to a matrix, ensure the list contains compatible data (e.g., numeric vectors of equal length) and use <code>matrix()</code> or <code>do.call()</code>.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>my_list <- list(c(1, 2, 3), c(4, 5, 6))
+mat <- do.call(cbind, my_list)  # Combine list elements as columns
+print(mat)
+# Output:
+#      [,1] [,2]
+# [1,]    1    4
+# [2,]    2    5
+# [3,]    3    6</code></pre>
+                <p>Alternatively, use <code>matrix()</code> with <code>unlist()</code>:</p>
+                <pre><code>mat <- matrix(unlist(my_list), nrow = 3, byrow = FALSE)</code></pre>
+            </div>
+            <div class="question">
+                <h3>15. b) Explain about accessing and deleting elements from the list give an example.</h3>
+                <ul>
+                    <li><strong>Accessing</strong>:
+                        <ul>
+                            <li>Use <code>[[]]</code>, <code>$</code>, or <code>[]</code> for elements or sublists.</li>
+                            <li>Example:<br>
+                                <pre><code>my_list <- list(a = 1, b = "hello", c = c(2, 3))
+print(my_list$a)         # Outputs 1
+print(my_list[[3]])      # Outputs 2 3
+print(my_list[2])        # Outputs sublist: $b [1] "hello"</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Deleting</strong>:
+                        <ul>
+                            <li>Set elements to <code>NULL</code> or use negative indexing.</li>
+                            <li>Example:<br>
+                                <pre><code>my_list$c <- NULL
+print(my_list)           # c is removed
+my_list <- my_list[-1]   # Remove first element
+print(my_list)</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+         <div class="footer-content">
+       
+            <div class="social-links">
+                <a href="https://github.com/Sudarshanbadli" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/sudarshan_badli?t=4rxkwhdm80fYCRGuyv-nSg&s=09" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://codepen.io/Sudarshan-Badli" target="_blank" aria-label="Codepen"><i class="fab fa-codepen"></i></a>
+                 <a href="https://www.instagram.com/sudarshanbadli_7?igsh=azU0MDVibTB5bWFo" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          
+   
+        <p><p>&copy; 2025 Sudarshan Badli. All rights reserved.</p>
+                    
+            <p class="mt-2">Made with ❤️ and <i class="fas fa-code text-white-500"></i></p>
+        </div>
+    </footer>
+    <script src="unit.js"></script>
+</body>
+</html>

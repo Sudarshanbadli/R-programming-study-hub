@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R Programming: Advanced Statistics Topics</title>
+    <link rel="stylesheet" href="unit.css">
+        <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1> Advanced Statistics Topics</h1>
+        <p>Comprehensive Notes with Examples for Examination</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#part-a">Part A: Short Answer Questions</a></li>
+            <li><a href="#part-b">Part B: Long Answer Questions</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="part-a">
+            <h2>Part A: Short Answer Questions</h2>
+            <div class="question">
+                <h3>1. What is a T-test in R, and how is it performed?</h3>
+                <p>A T-test compares the means of one or two groups to determine if they are significantly different. In R, use <code>t.test()</code>.</p>
+                <p><strong>Example</strong> (One-sample T-test):</p>
+                <pre><code>data <- c(10, 12, 14, 11, 13)
+t.test(data, mu = 12)  # Test if mean equals 12
+# Output: p-value indicates significance</code></pre>
+            </div>
+            <div class="question">
+                <h3>2. What is an ANOVA test in R, and when is it used?</h3>
+                <p>ANOVA (Analysis of Variance) tests if there are significant differences between the means of three or more groups. Use <code>aov()</code> or <code>anova()</code>.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>data <- data.frame(value = c(10, 12, 14, 20, 22, 24, 30, 32, 34),
+                           group = rep(c("A", "B", "C"), each = 3))
+result <- aov(value ~ group, data = data)
+summary(result)</code></pre>
+            </div>
+            <div class="question">
+                <h3>3. What is covariance in R, and how is it calculated?</h3>
+                <p>Covariance measures the linear relationship between two variables. Use <code>cov()</code> in R.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>x <- c(1, 2, 3, 4, 5)
+y <- c(2, 4, 6, 8, 10)
+print(cov(x, y))  # Outputs: 5 (positive covariance)</code></pre>
+            </div>
+            <div class="question">
+                <h3>4. What is correlation in R, and how is it computed?</h3>
+                <p>Correlation measures the strength and direction of the linear relationship between two variables, ranging from -1 to 1. Use <code>cor()</code> in R.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>x <- c(1, 2, 3, 4, 5)
+y <- c(2, 4, 6, 8, 10)
+print(cor(x, y))  # Outputs: 1 (perfect positive correlation)</code></pre>
+            </div>
+            <div class="question">
+                <h3>5. How is error handling implemented in R?</h3>
+                <p>Error handling in R is managed using <code>try()</code>, <code>tryCatch()</code>, or <code>stop()</code> to catch and handle errors gracefully.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>result <- try(log(-1))  # Invalid input
+if (inherits(result, "try-error")) {
+  print("Error: Logarithm of negative number")
+}
+# Output: Error: Logarithm of negative number</code></pre>
+            </div>
+            <div class="question">
+                <h3>6. What is a reference class in R?</h3>
+                <p>Reference classes (RC) in R provide object-oriented programming with mutable objects and methods, created using <code>setRefClass()</code>.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>Person <- setRefClass("Person", fields = list(name = "character"),
+                              methods = list(show = function() cat("Name:", name, "\n")))
+p <- Person$new(name = "Alice")
+p$show()  # Outputs: Name: Alice</code></pre>
+            </div>
+            <div class="question">
+                <h3>7. What is descriptive analysis in R?</h3>
+                <p>Descriptive analysis summarizes data using statistics like mean, median, mode, min, max, and percentiles, often visualized with plots.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>data <- c(1, 2, 2, 3, 4)
+summary(data)  # Outputs min, max, quartiles, mean</code></pre>
+            </div>
+            <div class="question">
+                <h3>8. What is hypothesis testing in R?</h3>
+                <p>Hypothesis testing evaluates whether sample data supports a null hypothesis (H₀) against an alternative (H₁) using tests like T-test or ANOVA.</p>
+                <p><strong>Example</strong> (Two-sample T-test):</p>
+                <pre><code>group1 <- c(10, 12, 14)
+group2 <- c(15, 17, 19)
+t.test(group1, group2)  # Compare means</code></pre>
+            </div>
+            <div class="question">
+                <h3>9. What is linear regression in R, and how is it performed?</h3>
+                <p>Linear regression models the relationship between a dependent variable and one or more independent variables. Use <code>lm()</code> in R.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>x <- 1:5
+y <- c(2, 4, 5, 4, 5)
+model <- lm(y ~ x)
+summary(model)</code></pre>
+            </div>
+            <div class="question">
+                <h3>10. How do you interpret the output of a linear regression in R?</h3>
+                <p>The output of <code>lm()</code> includes:</p>
+                <ul>
+                    <li><strong>Coefficients</strong>: Slope and intercept.</li>
+                    <li><strong>R-squared</strong>: Proportion of variance explained.</li>
+                    <li><strong>p-value</strong>: Significance of predictors.</li>
+                </ul>
+                <p><strong>Example</strong>:</p>
+                <pre><code>model <- lm(mpg ~ wt, data = mtcars)
+summary(model)  # Outputs coefficients, R-squared, p-values</code></pre>
+            </div>
+        </section>
+        <section id="part-b">
+            <h2>Part B: Long Answer Questions</h2>
+            <div class="question">
+                <h3>11. a) Explain the T-test and its applications in R.</h3>
+                <p>A T-test compares means to assess significant differences:</p>
+                <ul>
+                    <li><strong>One-sample T-test</strong>: Tests if a sample mean differs from a known value (<code>t.test(x, mu = value)</code>).</li>
+                    <li><strong>Two-sample T-test</strong>: Compares means of two groups (<code>t.test(x, y)</code>).</li>
+                    <li><strong>Paired T-test</strong>: Tests differences in paired data (<code>t.test(x, y, paired = TRUE)</code>).</li>
+                    <li><strong>Applications</strong>: Comparing group means in experiments (e.g., drug efficacy).</li>
+                </ul>
+                <p><strong>Example</strong>:</p>
+                <pre><code>group1 <- c(10, 12, 14, 11, 13)
+group2 <- c(15, 17, 19, 16, 18)
+t.test(group1, group2)  # Two-sample T-test</code></pre>
+            </div>
+            <div class="question">
+                <h3>11. b) Write an R program to perform a two-sample T-test and interpret results.</h3>
+                <pre><code># Sample data
+group1 <- c(10, 12, 14, 11, 13)
+group2 <- c(15, 17, 19, 16, 18)
+
+# Perform two-sample T-test
+result <- t.test(group1, group2, var.equal = TRUE)
+
+# Display results
+print(result)
+
+# Interpret
+cat("p-value:", result$p.value, "\n")
+if (result$p.value < 0.05) {
+  cat("Reject null hypothesis: Means are significantly different\n")
+} else {
+  cat("Fail to reject null hypothesis: No significant difference\n")
+}
+# Output example:
+# p-value: 0.0012
+# Reject null hypothesis: Means are significantly different</code></pre>
+            </div>
+            <div class="question">
+                <h3>12. a) Explain ANOVA and its use in R.</h3>
+                <p>ANOVA tests differences between means of three or more groups:</p>
+                <ul>
+                    <li><strong>One-way ANOVA</strong>: Compares means across one factor (<code>aov(y ~ factor)</code>).</li>
+                    <li><strong>Two-way ANOVA</strong>: Includes two factors.</li>
+                    <li><strong>Use</strong>: Compare multiple groups (e.g., treatment effects across groups).</li>
+                </ul>
+                <p><strong>Example</strong>:</p>
+                <pre><code>data <- data.frame(value = c(10, 12, 14, 20, 22, 24, 30, 32, 34),
+                           group = rep(c("A", "B", "C"), each = 3))
+result <- aov(value ~ group, data = data)
+summary(result)</code></pre>
+            </div>
+            <div class="question">
+                <h3>12. b) Write an R program to perform a one-way ANOVA and visualize results.</h3>
+                <pre><code># Sample data
+data <- data.frame(value = c(10, 12, 14, 20, 22, 24, 30, 32, 34),
+                   group = rep(c("A", "B", "C"), each = 3))
+
+# Perform one-way ANOVA
+result <- aov(value ~ group, data = data)
+print(summary(result))
+
+# Visualize with boxplot
+boxplot(value ~ group, data = data, main = "Boxplot by Group", 
+        xlab = "Group", ylab = "Value", col = c("lightblue", "lightgreen", "lightpink"))
+# Output: p-value indicates if group means differ significantly</code></pre>
+            </div>
+            <div class="question">
+                <h3>13. a) Explain covariance and correlation in R.</h3>
+                <p>
+                    <ul>
+                        <li><strong>Covariance</strong>: Measures the linear relationship between two variables (<code>cov()</code>). Positive values indicate variables move together; negative values indicate opposite movement.</li>
+                        <li><strong>Correlation</strong>: Standardizes covariance to range from -1 to 1 (<code>cor()</code>). Methods include Pearson (linear) and Spearman (rank-based).</li>
+                    </ul>
+                </p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>x <- c(1, 2, 3, 4, 5)
+y <- c(2, 4, 6, 8, 10)
+print(cov(x, y))   # Outputs: 5
+print(cor(x, y))   # Outputs: 1</code></pre>
+            </div>
+            <div class="question">
+                <h3>13. b) Write an R program to compute and visualize covariance and correlation.</h3>
+                <pre><code># Sample data
+x <- c(1, 2, 3, 4, 5)
+y <- c(2, 4, 6, 8, 10)
+
+# Compute covariance and correlation
+cov_xy <- cov(x, y)
+cor_xy <- cor(x, y, method = "pearson")
+
+# Display results
+cat("Covariance:", cov_xy, "\n")
+cat("Correlation:", cor_xy, "\n")
+
+# Visualize with scatterplot
+plot(x, y, main = "Scatterplot of X vs Y", xlab = "X", ylab = "Y", 
+     pch = 19, col = "blue")
+abline(lm(y ~ x), col = "red")  # Add regression line
+# Output:
+# Covariance: 5
+# Correlation: 1</code></pre>
+            </div>
+            <div class="question">
+                <h3>14. a) Explain error handling in R and its importance.</h3>
+                <p>Error handling in R ensures robust programs by managing exceptions:</p>
+                <ul>
+                    <li><strong>Functions</strong>: <code>try()</code>, <code>tryCatch()</code>, <code>stop()</code>, <code>warning()</code>.</li>
+                    <li><strong>Use</strong>: Prevents crashes, provides user-friendly messages, and allows recovery.</li>
+                </ul>
+                <p><strong>Example</strong>:</p>
+                <pre><code>tryCatch(log(-1), error = function(e) cat("Error:", e$message, "\n"))
+# Outputs: Error: non-positive x</code></pre>
+            </div>
+            <div class="question">
+                <h3>14. b) Write an R program to implement error handling for invalid inputs.</h3>
+                <pre><code># Function with error handling
+safe_log <- function(x) {
+  tryCatch({
+    if (x <= 0) stop("Input must be positive")
+    return(log(x))
+  }, error = function(e) {
+    cat("Error:", e$message, "\n")
+    return(NULL)
+  })
+}
+
+# Test cases
+print(safe_log(10))    # Outputs: 2.302585
+print(safe_log(-1))    # Outputs: Error: Input must be positive
+print(safe_log("abc")) # Outputs: Error: non-numeric argument</code></pre>
+            </div>
+            <div class="question">
+                <h3>15. a) Explain descriptive analysis and hypothesis testing in R.</h3>
+                <p>
+                    <ul>
+                        <li><strong>Descriptive Analysis</strong>: Summarizes data using statistics (mean, median, mode, percentiles) and visualizations (boxplots, histograms).</li>
+                        <li><strong>Hypothesis Testing</strong>: Tests hypotheses about population parameters using tests like T-test, ANOVA, or chi-square tests.</li>
+                    </ul>
+                </p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>data <- c(10, 12, 14, 11, 13)
+summary(data)  # Descriptive stats
+t.test(data, mu = 12)  # Hypothesis test</code></pre>
+            </div>
+            <div class="question">
+                <h3>15. b) Write an R program to perform descriptive analysis and hypothesis testing.</h3>
+                <pre><code># Sample data
+data <- c(10, 12, 14, 11, 13, 15, 16, 14, 12)
+
+# Descriptive analysis
+cat("Mean:", mean(data), "\n")
+cat("Median:", median(data), "\n")
+cat("Standard Deviation:", sd(data), "\n")
+cat("Percentiles:\n")
+print(quantile(data, probs = c(0.25, 0.5, 0.75)))
+
+# Hypothesis testing (one-sample T-test)
+result <- t.test(data, mu = 12)
+print(result)
+
+# Visualize with histogram
+hist(data, main = "Histogram of Data", xlab = "Values", col = "lightblue")
+# Output example:
+# Mean: 13
+# Median: 13
+# Standard Deviation: 1.870829
+# Percentiles:
+# 25% 50% 75%
+# 12  13  14.5</code></pre>
+            </div>
+        </section>
+    </main>
+       <footer>
+        <div class="footer-content">
+       
+            <div class="social-links">
+                <a href="https://github.com/Sudarshanbadli" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/sudarshan_badli?t=4rxkwhdm80fYCRGuyv-nSg&s=09" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://codepen.io/Sudarshan-Badli" target="_blank" aria-label="Codepen"><i class="fab fa-codepen"></i></a>
+                 <a href="https://www.instagram.com/sudarshanbadli_7?igsh=azU0MDVibTB5bWFo" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          
+   
+        <p><p>&copy; 2025 Sudarshan Badli. All rights reserved.</p>
+                    
+            <p class="mt-2">Made with ❤️ and <i class="fas fa-code text-white-500"></i></p>
+        </div>
+    </footer>
+    <script src="unit.js"></script>
+</body>
+</html>

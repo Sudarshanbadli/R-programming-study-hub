@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solved Questions - Statistical Computing and R Programming</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .question h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .answer {
+            padding: 10px;
+            background-color: white;
+            border-left: 3px solid #3498db;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+                font-size: 14px;
+            }
+            .question {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>VI Semester B.Sc. (NEP) Degree Examination, May/June - 2025</h1>
+        <h2>Statistical Computing and R Programming</h2>
+        <p>Solved Questions Paper</p>
+    </div>
+
+    <h2>Section A: Answer any TEN questions (10×2=20)</h2>
+
+    <div class="question">
+        <h3>1. Define string and data frame in R.</h3>
+        <div class="answer">
+            <p><strong>String in R:</strong> A string is a sequence of characters enclosed in single (' ') or double (" ") quotes. R stores strings as character objects. Strings are used to represent text data.</p>
+            <p><strong>Data Frame in R:</strong> A data frame is a two-dimensional data structure similar to a table or spreadsheet. It consists of rows and columns where each column can contain different types of data (numeric, character, factor, etc.), but all values in a single column must be of the same type. Data frames are the most common data structure used for storing datasets in R.</p>
+            <p><strong>Example:</strong></p>
+            <pre># String example
+name <- "John Doe"
+
+# Data frame example
+df <- data.frame(
+  Name = c("John", "Jane", "Mike"),
+  Age = c(25, 30, 28),
+  Married = c(TRUE, FALSE, TRUE)
+)</pre>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>2. Mention data types used in R.</h3>
+        <div class="answer">
+            <p>R has several basic data types:</p>
+            <ol>
+                <li><strong>Numeric:</strong> Decimal numbers (e.g., 10.5, 3.14)</li>
+                <li><strong>Integer:</strong> Whole numbers (e.g., 5L, -3L)</li>
+                <li><strong>Logical:</strong> Boolean values (TRUE or FALSE)</li>
+                <li><strong>Character:</strong> Text strings (e.g., "hello", 'R')</li>
+                <li><strong>Complex:</strong> Complex numbers (e.g., 3+2i)</li>
+                <li><strong>Raw:</strong> Holds raw bytes (rarely used directly)</li>
+            </ol>
+            <p>Additionally, R has special values:</p>
+            <ul>
+                <li><code>NA</code>: Missing value</li>
+                <li><code>NULL</code>: Empty object</li>
+                <li><code>Inf</code>: Infinity</li>
+                <li><code>NaN</code>: Not a Number</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>3. Define recursive function in R.</h3>
+        <div class="answer">
+            <p>A recursive function in R is a function that calls itself during its execution. Recursion is a programming technique where the solution to a problem depends on solutions to smaller instances of the same problem.</p>
+            <p>Key characteristics of recursive functions:</p>
+            <ul>
+                <li>They must have a base case (stopping condition) to prevent infinite recursion</li>
+                <li>Each recursive call should simplify the problem, moving toward the base case</li>
+                <li>They can be more elegant but may use more memory than iterative solutions</li>
+            </ul>
+            <p><strong>Example (Factorial function):</strong></p>
+            <pre>factorial <- function(n) {
+  if (n == 0) {  # Base case
+    return(1)
+  } else {
+    return(n * factorial(n-1))  # Recursive call
+  }
+}
+
+factorial(5)  # Returns 120</pre>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>4. Write syntax and example of if-else statement in R.</h3>
+        <div class="answer">
+            <p><strong>Syntax:</strong></p>
+            <pre>if (condition) {
+  # code to execute if condition is TRUE
+} else {
+  # code to execute if condition is FALSE
+}</pre>
+
+            <p><strong>Example:</strong></p>
+            <pre># Check if a number is positive or negative
+num <- -5
+
+if (num > 0) {
+  print("The number is positive")
+} else {
+  print("The number is negative or zero")
+}</pre>
+
+            <p>R also supports <code>else if</code> for multiple conditions:</p>
+            <pre># Grading system example
+score <- 85
+
+if (score >= 90) {
+  grade <- "A"
+} else if (score >= 80) {
+  grade <- "B"
+} else if (score >= 70) {
+  grade <- "C"
+} else {
+  grade <- "D"
+}
+
+print(paste("Your grade is", grade))</pre>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>5. Write any two file handling functions.</h3>
+        <div class="answer">
+            <p>R provides several functions for file handling. Here are two important ones:</p>
+            
+            <p><strong>1. read.csv()</strong> - Reads data from a CSV file into a data frame</p>
+            <pre># Read a CSV file
+data <- read.csv("filename.csv")
+
+# With additional parameters
+data <- read.csv("filename.csv", header = TRUE, stringsAsFactors = FALSE)</pre>
+            
+            <p><strong>2. write.table()</strong> - Writes data to a file (general function that can write various formats)</p>
+            <pre># Write data frame to CSV file
+write.table(mydata, "output.csv", sep = ",", row.names = FALSE)
+
+# Alternative: write.csv() specifically for CSV files
+write.csv(mydata, "output.csv", row.names = FALSE)</pre>
+            
+            <p>Other important file handling functions include <code>read.table()</code>, <code>save()</code>, <code>load()</code>, <code>readRDS()</code>, <code>saveRDS()</code>, <code>file.exists()</code>, and <code>dir()</code>.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>6. What are generic functions?</h3>
+        <div class="answer">
+            <p>Generic functions in R are functions that behave differently depending on the class of the object passed to them. They implement polymorphism in R through a mechanism called method dispatch.</p>
+            
+            <p>Key characteristics of generic functions:</p>
+            <ul>
+                <li>They examine the class of their arguments to determine which specific method to call</li>
+                <li>The same function name can work with different types of objects</li>
+                <li>Common examples include <code>print()</code>, <code>plot()</code>, and <code>summary()</code></li>
+            </ul>
+            
+            <p><strong>Example:</strong></p>
+            <pre># The print() function behaves differently for different objects
+print(123)           # Works with numeric
+print("Hello")       # Works with character
+print(lm(y ~ x))     # Works with lm objects (linear models)</pre>
+            
+            <p>You can see the available methods for a generic function using:</p>
+            <pre>methods(print)   # Shows all print methods for different classes</pre>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>7. Define standard deviation.</h3>
+        <div class="answer">
+            <p>Standard deviation is a measure of the amount of variation or dispersion in a set of values. It quantifies how much the individual data points differ from the mean (average) value of the dataset.</p>
+            
+            <p><strong>Key points:</strong></p>
+            <ul>
+                <li>A low standard deviation indicates that the data points tend to be close to the mean</li>
+                <li>A high standard deviation indicates that the data points are spread out over a wider range</li>
+                <li>Mathematically, it's the square root of the variance</li>
+                <li>For a population, standard deviation (σ) is calculated as:
+                    <br>σ = √[Σ(xᵢ - μ)²/N]
+                    <br>where μ is the population mean and N is the population size</li>
+                <li>For a sample, we typically use the sample standard deviation (s) with Bessel's correction:
+                    <br>s = √[Σ(xᵢ - x̄)²/(n-1)]
+                    <br>where x̄ is the sample mean and n is the sample size</li>
+            </ul>
+            
+            <p><strong>In R:</strong></p>
+            <pre># Calculate standard deviation
+data <- c(2, 4, 4, 4, 5, 5, 7, 9)
+sd(data)  # Returns 2.13809</pre>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>8. Write a syntax of mean, median functions in R.</h3>
+        <div class="answer">
+            <p><strong>Mean function syntax:</strong></p>
+            <pre>mean(x, trim = 0, na.rm = FALSE, ...)</pre>
+            <p>Where:
+            <ul>
+                <li><code>x</code>: Input vector</li>
+                <li><code>trim</code>: Fraction (0 to 0.5) of observations to be trimmed from each end before mean computation</li>
+                <li><code>na.rm</code>: Logical indicating whether to remove NA values</li>
+            </ul>
+            </p>
+            
+            <p><strong>Median function syntax:</strong></p>
+            <pre>median(x, na.rm = FALSE, ...)</pre>
+            <p>Where:
+            <ul>
+                <li><code>x</code>: Input vector</li>
+                <li><code>na.rm</code>: Logical indicating whether to remove NA values</li>
+            </ul>
+            </p>
+            
+            <p><strong>Examples:</strong></p>
+            <pre># Mean examples
+values <- c(1, 2, 3, 4, 5, NA)
+mean(values)                   # Returns NA
+mean(values, na.rm = TRUE)     # Returns 3
+mean(values, trim = 0.2)       # Trimmed mean (removes lowest and highest 20%)
+
+# Median examples
+median(c(1, 3, 5))            # Returns 3
+median(c(1, 3, 5, 7))         # Returns 4 (average of middle two values)
+median(values, na.rm = TRUE)   # Returns 3</pre>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>9. What are plotting regions?</h3>
+        <div class="answer">
+            <p>In R's base graphics system, the plotting region refers to the area of the graphics device where the actual plot is drawn. It's part of the overall figure region which may also include margins, titles, and axis labels.</p>
+            
+            <p><strong>Key components of plotting regions:</strong></p>
+            <ol>
+                <li><strong>Figure Region:</strong> The entire graphical output area</li>
+                <li><strong>Plotting Region:</strong> The inner area where data points and lines are plotted</li>
+                <li><strong>Margins:</strong> The space around the plotting region for axis labels, titles, etc.</li>
+            </ol>
+            
+            <p><strong>Important parameters:</strong></p>
+            <ul>
+                <li><code>par("plt")</code>: Gets or sets the plotting region coordinates (normalized device coordinates, 0-1)</li>
+                <li><code>par("mar")</code>: Controls margin sizes (bottom, left, top, right) in lines of text</li>
+                <li><code>par("oma")</code>: Controls outer margin area</li>
+            </ul>
+            
+            <p><strong>Example of setting plotting regions:</strong></p>
+            <pre># Set up a plot with specific margins
+par(mar = c(5, 4, 4, 2) + 0.1)  # Bottom, left, top, right margins
+plot(1:10, main = "Plot with Custom Margins")
+
+# Multiple plots in one figure
+par(mfrow = c(2, 2))  # 2 rows, 2 columns
+plot(1:10)
+plot(rnorm(10))
+hist(rnorm(100))
+boxplot(mpg ~ cyl, data = mtcars)</pre>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>10. Define correlation.</h3>
+        <div class="answer">
+            <p>Correlation is a statistical measure that describes the extent to which two variables change together. It indicates both the strength and direction of the linear relationship between two quantitative variables.</p>
+            
+            <p><strong>Key characteristics of correlation:</strong></p>
+            <ul>
+                <li>Ranges between -1 and +1</li>
+                <li>A correlation of +1 indicates a perfect positive linear relationship</li>
+                <li>A correlation of -1 indicates a perfect negative linear relationship</li>
+                <li>A correlation of 0 indicates no linear relationship</li>
+                <li>The most common measure is Pearson's correlation coefficient (r)</li>
+            </ul>
+            
+            <p><strong>Pearson's correlation formula:</strong></p>
+            <p>r = Σ[(xᵢ - x̄)(yᵢ - ȳ)] / [√Σ(xᵢ - x̄)² * √Σ(yᵢ - ȳ)²]</p>
+            
+            <p><strong>In R:</strong></p>
+            <pre># Calculate correlation
+x <- c(1, 2, 3, 4, 5)
+y <- c(2, 4, 5, 4, 5)
+cor(x, y)  # Returns 0.8
+
+# Correlation matrix for multiple variables
+cor(mtcars[, c("mpg", "wt", "hp")])</pre>
+            
+            <p><strong>Visualization:</strong></p>
+            <pre>plot(x, y)  # Scatter plot showing positive correlation</pre>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>11. Differentiate cat() and print() functions.</h3>
+        <div class="answer">
+            <p>Both <code>cat()</code> and <code>print()</code> are used to display output in R, but they have important differences:</p>
+            
+            <table border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
+                <tr>
+                    <th>Feature</th>
+                    <th>cat()</th>
+                    <th>print()</th>
+                </tr>
+                <tr>
+                    <td>Purpose</td>
+                    <td>Concatenates and prints objects (no conversion)</td>
+                    <td>Prints its argument (converts to character if needed)</td>
+                </tr>
+                <tr>
+                    <td>Output</td>
+                    <td>No line numbers or quotes</td>
+                    <td>Shows line numbers and quotes for strings</td>
+                </tr>
+                <tr>
+                    <td>Return value</td>
+                    <td>NULL (invisible)</td>
+                    <td>The object being printed</td>
+                </tr>
+                <tr>
+                    <td>Multiple items</td>
+                    <td>Can concatenate multiple items easily</td>
+                    <td>Prints one object at a time</td>
+                </tr>
+                <tr>
+                    <td>Formatting</td>
+                    <td>More control over output format</td>
+                    <td>Standardized output format</td>
+                </tr>
+                <tr>
+                    <td>Newlines</td>
+                    <td>Requires explicit "\n" for new lines</td>
+                    <td>Automatically adds newlines</td>
+                </tr>
+                <tr>
+                    <td>Use in functions</td>
+                    <td>Better for custom output messages</td>
+                    <td>Better for displaying objects</td>
+                </tr>
+            </table>
+            
+            <p><strong>Examples:</strong></p>
+            <pre># cat() examples
+cat("Hello", "World")        # Output: Hello World
+cat("Value is", 10, "\n")    # Output: Value is 10 (with newline)
+
+# print() examples
+print("Hello")               # Output: [1] "Hello"
+print(1:5)                   # Output: [1] 1 2 3 4 5</pre>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>12. Define linear regression.</h3>
+        <div class="answer">
+            <p>Linear regression is a statistical method that models the relationship between a dependent (response) variable and one or more independent (predictor) variables by fitting a linear equation to the observed data.</p>
+            
+            <p><strong>Key aspects of linear regression:</strong></p>
+            <ul>
+                <li>Assumes a linear relationship between variables</li>
+                <li>Used for prediction and inference</li>
+                <li>Simple linear regression involves one predictor: y = β₀ + β₁x + ε</li>
+                <li>Multiple linear regression involves multiple predictors: y = β₀ + β₁x₁ + β₂x₂ + ... + βₙxₙ + ε</li>
+                <li>Where:
+                    <ul>
+                        <li>y is the dependent variable</li>
+                        <li>x's are independent variables</li>
+                        <li>β₀ is the intercept</li>
+                        <li>β's are coefficients</li>
+                        <li>ε is the error term</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <p><strong>In R:</strong></p>
+            <pre># Simple linear regression example
+model <- lm(mpg ~ wt, data = mtcars)
+summary(model)
+
+# Multiple linear regression example
+model_multi <- lm(mpg ~ wt + hp + cyl, data = mtcars)
+summary(model_multi)
+
+# Plotting regression line
+plot(mtcars$wt, mtcars$mpg)
+abline(model, col = "red")</pre>
+        </div>
+    </div>
+
+    <h2>Section B: Answer any FOUR questions (4×5=20)</h2>
+
+    <div class="question">
+        <h3>13. Define vector. Explain vector methods in R.</h3>
+        <div class="answer">
+            <p><strong>Definition:</strong> A vector in R is a basic data structure that contains elements of the same type (numeric, character, logical, etc.). It's a one-dimensional array that can hold multiple values.</p>
+            
+            <p><strong>Vector creation:</strong></p>
+            <pre># Numeric vector
+num_vec <- c(1, 2, 3, 4, 5)
+
+# Character vector
+char_vec <- c("a", "b", "c")
+
+# Logical vector
+log_vec <- c(TRUE, FALSE, TRUE)</pre>
+            
+            <p><strong>Vector methods in R:</strong></p>
+            <ol>
+                <li><strong>Arithmetic Operations:</strong> Vectors support element-wise operations
+                    <pre>a <- c(1, 2, 3)
+b <- c(4, 5, 6)
+a + b  # 5 7 9
+a * b  # 4 10 18</pre>
+                </li>
+                <li><strong>Indexing:</strong> Access elements using []
+                    <pre>vec <- c(10, 20, 30, 40)
+vec[2]        # 20 (second element)
+vec[c(1,3)]   # 10 30 (first and third elements)
+vec[-2]       # 10 30 40 (all except second element)</pre>
+                </li>
+                <li><strong>Vectorized Functions:</strong> Many functions work element-wise on vectors
+                    <pre>sqrt(c(4, 9, 16))    # 2 3 4
+log(c(1, 10, 100))  # 0 2.302585 4.605170</pre>
+                </li>
+                <li><strong>Logical Operations:</strong> Create logical vectors
+                    <pre>vec <- 1:5
+vec > 3       # FALSE FALSE FALSE TRUE TRUE
+vec[vec > 3]  # 4 5 (elements greater than 3)</pre>
+                </li>
+                <li><strong>Named Vectors:</strong> Assign names to elements
+                    <pre>temps <- c(25, 30, 22)
+names(temps) <- c("Mon", "Tue", "Wed")
+temps["Tue"]  # 30</pre>
+                </li>
+                <li><strong>Recycling:</strong> R recycles shorter vectors in operations
+                    <pre>c(1, 2, 3) + c(10, 20)  # 11 22 13 (warning)</pre>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>14. Explain looping control statements in R.</h3>
+        <div class="answer">
+            <p>R provides several looping control statements to execute a block of code repeatedly:</p>
+            
+            <p><strong>1. for loop:</strong> Iterates over a sequence</p>
+            <pre># Basic for loop
+for (i in 1:5) {
+  print(i)
+}
+
+# Iterating over vector elements
+fruits <- c("apple", "banana", "cherry")
+for (fruit in fruits) {
+  print(paste("I like", fruit))
+}</pre>
+            
+            <p><strong>2. while loop:</strong> Executes while condition is TRUE</p>
+            <pre># While loop example
+count <- 1
+while (count <= 5) {
+  print(count)
+  count <- count + 1
+}
+
+# Practical example
+x <- 10
+while (x > 0) {
+  print(x)
+  x <- x - 2
+}</pre>
+            
+            <p><strong>3. repeat loop:</strong> Infinite loop until break</p>
+            <pre># Repeat loop with break
+x <- 1
+repeat {
+  print(x)
+  x <- x + 1
+  if (x > 5) {
+    break
+  }
+}</pre>
+            
+            <p><strong>Loop control statements:</strong></p>
+            <ul>
+                <li><code>break</code>: Exits the loop immediately</li>
+                <li><code>next</code>: Skips the current iteration</li>
+            </ul>
+            
+            <pre># Using next to skip even numbers
+for (i in 1:10) {
+  if (i %% 2 == 0) {
+    next  # Skip even numbers
+  }
+  print(i)
+}</pre>
+            
+            <p><strong>Vectorized alternatives:</strong> In R, it's often better to use vectorized operations instead of loops:</p>
+            <pre># Instead of looping to calculate squares
+numbers <- 1:5
+squares <- numbers^2  # Vectorized operation</pre>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>15. Write a R-program to find the factorial of given number.</h3>
+        <div class="answer">
+            <p>Here are three different ways to calculate factorial in R:</p>
+            
+            <p><strong>1. Using built-in function:</strong></p>
+            <pre># Method 1: Using factorial() function
+factorial_builtin <- function(n) {
+  return(factorial(n))
+}
+
+factorial_builtin(5)  # Returns 120</pre>
+            
+            <p><strong>2. Using iterative approach:</strong></p>
+            <pre># Method 2: Iterative solution
+factorial_iterative <- function(n) {
+  if (n < 0) {
+    return("Factorial not defined for negative numbers")
+  }
+  result <- 1
+  for (i in 1:n) {
+    result <- result * i
+  }
+  return(result)
+}
+
+factorial_iterative(5)  # Returns 120</pre>
+            
+            <p><strong>3. Using recursive approach:</strong></p>
+            <pre># Method 3: Recursive solution
+factorial_recursive <- function(n) {
+  if (n < 0) {
+    return("Factorial not defined for negative numbers")
+  } else if (n == 0) {
+    return(1)
+  } else {
+    return(n * factorial_recursive(n - 1))
+  }
+}
+
+factorial_recursive(5)  # Returns 120</pre>
+            
+            <p><strong>Testing the functions:</strong></p>
+            <pre># Test cases
+numbers <- c(0, 1, 5, 7, -3)
+
+for (num in numbers) {
+  cat("Factorial of", num, "is:\n")
+  cat("Built-in:", factorial_builtin(num), "\n")
+  cat("Iterative:", factorial_iterative(num), "\n")
+  cat("Recursive:", factorial_recursive(num), "\n\n")
+}</pre>
+            
+            <p><strong>Output:</strong></p>
+            <pre>Factorial of 0 is:
+Built-in: 1 
+Iterative: 1 
+Recursive: 1 
+
+Factorial of 1 is:
+Built-in: 1 
+Iterative: 1 
+Recursive: 1 
+
+Factorial of 5 is:
+Built-in: 120 
+Iterative: 120 
+Recursive: 120 
+
+Factorial of 7 is:
+Built-in: 5040 
+Iterative: 5040 
+Recursive: 5040 
+
+Factorial of -3 is:
+Built-in: NaN 
+Iterative: Factorial not defined for negative numbers 
+Recursive: Factorial not defined for negative numbers</pre>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>16. Write a note on T-test and ANOVA.</h3>
+        <div class="answer">
+            <p><strong>T-test:</strong></p>
+            <p>A t-test is a statistical hypothesis test used to determine if there is a significant difference between the means of two groups. It assumes the data follows a normal distribution.</p>
+            
+            <p><strong>Types of t-tests:</strong></p>
+            <ol>
+                <li><strong>One-sample t-test:</strong> Compares sample mean to a known value
+                    <pre># One-sample t-test in R
+t.test(mtcars$mpg, mu = 20)  # Test if mean mpg is 20</pre>
+                </li>
+                <li><strong>Independent two-sample t-test:</strong> Compares means of two independent groups
+                    <pre># Two-sample t-test
+t.test(mpg ~ am, data = mtcars)  # Compare mpg by transmission type</pre>
+                </li>
+                <li><strong>Paired t-test:</strong> Compares means of the same group at different times
+                    <pre># Paired t-test
+before <- c(200, 210, 190, 180, 205)
+after <- c(195, 200, 185, 175, 200)
+t.test(before, after, paired = TRUE)</pre>
+                </li>
+            </ol>
+            
+            <p><strong>ANOVA (Analysis of Variance):</strong></p>
+            <p>ANOVA is used to compare means among three or more groups. It tests the null hypothesis that all group means are equal.</p>
+            
+            <p><strong>Types of ANOVA:</strong></p>
+            <ol>
+                <li><strong>One-way ANOVA:</strong> Tests effect of one factor
+                    <pre># One-way ANOVA in R
+result <- aov(mpg ~ cyl, data = mtcars)
+summary(result)</pre>
+                </li>
+                <li><strong>Two-way ANOVA:</strong> Tests effects of two factors
+                    <pre># Two-way ANOVA
+result <- aov(mpg ~ cyl + am, data = mtcars)
+summary(result)</pre>
+                </li>
+                <li><strong>Repeated Measures ANOVA:</strong> For measurements on same subjects over time</li>
+            </ol>
+            
+            <p><strong>Key differences:</strong></p>
+            <ul>
+                <li>T-test compares two groups, ANOVA compares three or more</li>
+                <li>ANOVA is more appropriate when testing multiple groups to avoid Type I errors from multiple t-tests</li>
+                <li>Both assume normally distributed data and homogeneity of variance</li>
+            </ul>
+            
+            <p><strong>Post-hoc tests:</strong> If ANOVA is significant, post-hoc tests (like Tukey HSD) identify which specific groups differ
+                <pre>TukeyHSD(result)  # For pairwise comparisons</pre>
+            </p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>17. Explain Binomial Distribution with example.</h3>
+        <div class="answer">
+            <p>The binomial distribution is a discrete probability distribution that models the number of successes in a fixed number of independent Bernoulli trials (experiments with exactly two possible outcomes).</p>
+            
+            <p><strong>Parameters:</strong></p>
+            <ul>
+                <li><strong>n:</strong> Number of trials</li>
+                <li><strong>p:</strong> Probability of success on each trial</li>
+            </ul>
+            
+            <p><strong>Probability Mass Function:</strong></p>
+            <p>P(X = k) = C(n,k) * p^k * (1-p)^(n-k)</p>
+            <p>Where C(n,k) is the binomial coefficient (n choose k)</p>
+            
+            <p><strong>Properties:</strong></p>
+            <ul>
+                <li>Mean (μ) = n*p</li>
+                <li>Variance (σ²) = n*p*(1-p)</li>
+                <li>Standard deviation (σ) = √(n*p*(1-p))</li>
+            </ul>
+            
+            <p><strong>Example Scenario:</strong></p>
+            <p>Suppose we flip a fair coin (p=0.5) 10 times (n=10). What's the probability of getting exactly 7 heads?</p>
+            
+            <p><strong>Calculations in R:</strong></p>
+            <pre># Probability of exactly 7 successes in 10 trials with p=0.5
+dbinom(7, size = 10, prob = 0.5)  # Returns 0.1171875
+
+# Cumulative probability (7 or fewer successes)
+pbinom(7, size = 10, prob = 0.5)  # Returns 0.9453125
+
+# Generate random binomial data
+rbinom(10, size = 10, prob = 0.5) # 10 samples of 10 trials each
+
+# Plot binomial distribution
+x <- 0:10
+prob <- dbinom(x, size = 10, prob = 0.5)
+plot(x, prob, type = "h", lwd = 2, main = "Binomial Distribution (n=10, p=0.5)",
+     xlab = "Number of Successes", ylab = "Probability")</pre>
+            
+            <p><strong>Real-world Example:</strong></p>
+            <pre># Quality control example
+# If 5% of items are defective, what's the probability of finding exactly 2 defectives in a sample of 20?
+dbinom(2, size = 20, prob = 0.05)  # 0.1886768
+
+# What's the probability of finding 2 or fewer defectives?
+pbinom(2, size = 20, prob = 0.05)  # 0.9245163</pre>
+            
+            <p><strong>Assumptions:</strong></p>
+            <ol>
+                <li>Fixed number of trials (n)</li>
+                <li>Independent trials</li>
+                <li>Constant probability of success (p)</li>
+                <li>Two possible outcomes per trial</li>
+            </ol>
+        </div>
+    </div>
+
+    <h2>Section C: Answer any TWO questions (2×10=20)</h2>
+
+    <div class="question">
+        <h3>18. a) Explain operators used in R.</h3>
+        <div class="answer">
+            <p>R provides various types of operators for different operations:</p>
+            
+            <p><strong>1. Arithmetic Operators:</strong> For mathematical operations</p>
+            <table border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
+                <tr>
+                    <th>Operator</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>+</td>
+                    <td>Addition</td>
+                    <td>3 + 2 → 5</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>Subtraction</td>
+                    <td>5 - 2 → 3</td>
+                </tr>
+                <tr>
+                    <td>*</td>
+                    <td>Multiplication</td>
+                    <td>3 * 4 → 12</td>
+                </tr>
+                <tr>
+                    <td>/</td>
+                    <td>Division</td>
+                    <td>10 / 2 → 5</td>
+                </tr>
+                <tr>
+                    <td>^ or **</td>
+                    <td>Exponentiation</td>
+                    <td>2^3 → 8</td>
+                </tr>
+                <tr>
+                    <td>%%</td>
+                    <td>Modulus (remainder)</td>
+                    <td>5 %% 2 → 1</td>
+                </tr>
+                <tr>
+                    <td>%/%</td>
+                    <td>Integer division</td>
+                    <td>5 %/% 2 → 2</td>
+                </tr>
+            </table>
+            
+            <p><strong>2. Relational Operators:</strong> For comparisons</p>
+            <table border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
+                <tr>
+                    <th>Operator</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><</td>
+                    <td>Less than</td>
+                    <td>3 < 5 → TRUE</td>
+                </tr>
+                <tr>
+                    <td>></td>
+                    <td>Greater than</td>
+                    <td>5 > 3 → TRUE</td>
+                </tr>
+                <tr>
+                    <td><=</td>
+                    <td>Less than or equal</td>
+                    <td>3 <= 3 → TRUE</td>
+                </tr>
+                <tr>
+                    <td>>=</td>
+                    <td>Greater than or equal</td>
+                    <td>5 >= 5 → TRUE</td>
+                </tr>
+                <tr>
+                    <td>==</td>
+                    <td>Equal to</td>
+                    <td>3 == 3 → TRUE</td>
+                </tr>
+                <tr>
+                    <td>!=</td>
+                    <td>Not equal</td>
+                    <td>3 != 5 → TRUE</td>
+                </tr>
+            </table>
+            
+            <p><strong>3. Logical Operators:</strong> For boolean operations</p>
+            <table border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
+                <tr>
+                    <th>Operator</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>!</td>
+                    <td>Logical NOT</td>
+                    <td>!TRUE → FALSE</td>
+                </tr>
+                <tr>
+                    <td>&</td>
+                    <td>Element-wise AND</td>
+                    <td>TRUE & FALSE → FALSE</td>
+                </tr>
+                <tr>
+                    <td>|</td>
+                    <td>Element-wise OR</td>
+                    <td>TRUE | FALSE → TRUE</td>
+                </tr>
+                <tr>
+                    <td>&&</td>
+                    <td>Logical AND (short-circuit)</td>
+                    <td>TRUE && FALSE → FALSE</td>
+                </tr>
+                <tr>
+                    <td>||</td>
+                    <td>Logical OR (short-circuit)</td>
+                    <td>TRUE || FALSE → TRUE</td>
+                </tr>
+            </table>
+            
+            <p><strong>4. Assignment Operators:</strong> For assigning values</p>
+            <table border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
+                <tr>
+                    <th>Operator</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><-</td>
+                    <td>Left assignment</td>
+                    <td>x <- 5</td>
+                </tr>
+                <tr>
+                    <td>=</td>
+                    <td>Left assignment</td>
+                    <td>x = 5</td>
+                </tr>
+                <tr>
+                    <td>-></td>
+                    <td>Right assignment</td>
+                    <td>5 -> x</td>
+                </tr>
+                <tr>
+                    <td><<-</td>
+                    <td>Global assignment</td>
+                    <td>x <<- 5</td>
+                </tr>
+            </table>
+            
+            <p><strong>5. Special Operators:</strong></p>
+            <table border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
+                <tr>
+                    <th>Operator</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>:</td>
+                    <td>Sequence generation</td>
+                    <td>1:5 → 1 2 3 4 5</td>
+                </tr>
+                <tr>
+                    <td>%in%</td>
+                    <td>Value matching</td>
+                    <td>3 %in% c(1,3,5) → TRUE</td>
+                </tr>
+                <tr>
+                    <td>%*%</td>
+                    <td>Matrix multiplication</td>
+                    <td>A %*% B</td>
+                </tr>
+                <tr>
+                    <td>%>%</td>
+                    <td>Pipe operator (from magrittr)</td>
+                    <td>data %>% filter() %>% select()</td>
+                </tr>
+            </table>
+            
+            <p><strong>Operator Precedence:</strong> R follows standard operator precedence rules. Parentheses can be used to override precedence.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>18. b) Explain multiple return functions with examples.</h3>
+        <div class="answer">
+            <p>In R, functions typically return a single object, but there are several techniques to return multiple values:</p>
+            
+            <p><strong>1. Returning a List:</strong> The most common approach</p>
+            <pre># Function that returns multiple values as a list
+calculate_stats <- function(x) {
+  mean_val <- mean(x)
+  median_val <- median(x)
+  sd_val <- sd(x)
+  
+  return(list(mean = mean_val, median = median_val, sd = sd_val))
+}
+
+# Usage
+data <- c(1, 2, 3, 4, 5)
+results <- calculate_stats(data)
+results$mean    # Access mean
+results$median  # Access median
+results$sd      # Access standard deviation</pre>
+            
+            <p><strong>2. Using the return() function with multiple values:</strong></p>
+            <pre># Function that returns multiple values directly
+get_min_max <- function(x) {
+  return(c(min = min(x), max = max(x)))
+}
+
+# Usage
+values <- c(10, 5, 8, 12, 3)
+extrema <- get_min_max(values)
+extrema["min"]  # Access minimum
+extrema["max"]  # Access maximum</pre>
+            
+            <p><strong>3. Using invisible() for multiple returns:</strong></p>
+            <pre># Function that prints one value and returns another
+process_data <- function(x) {
+  cat("Mean:", mean(x), "\n")
+  invisible(median(x))  # Returns median without printing
+}
+
+# Usage
+data <- rnorm(100)
+med <- process_data(data)  # Prints mean, assigns median to med
+med  # Now we can see the median</pre>
+            
+            <p><strong>4. Modifying environments (advanced):</strong></p>
+            <pre># Function that modifies variables in parent environment
+multiple_returns <- function(x) {
+  mean_val <- mean(x)
+  sum_val <- sum(x)
+  
+  # Assign to parent environment
+  assign("mean_result", mean_val, envir = parent.frame())
+  assign("sum_result", sum_val, envir = parent.frame())
+}
+
+# Usage
+numbers <- 1:10
+multiple_returns(numbers)
+mean_result  # Now exists in global environment
+sum_result   # Also exists in global environment</pre>
+            
+            <p><strong>5. Using S3/S4 objects (for complex returns):</strong></p>
+            <pre># Create a custom class for multiple returns
+create_stats_object <- function(x) {
+  stats <- list(
+    mean = mean(x),
+    median = median(x),
+    range = range(x)
+  )
+  
+  class(stats) <- "MyStats"
+  return(stats)
+}
+
+# Usage
+my_stats <- create_stats_object(c(1, 3, 5, 7))
+my_stats$mean
+my_stats$range</pre>
+            
+            <p><strong>Best Practices:</strong></p>
+            <ul>
+                <li>For clarity, prefer returning lists with named elements</li>
+                <li>Document what your function returns</li>
+                <li>Consider creating custom classes for complex return objects</li>
+                <li>Avoid modifying parent environments unless necessary</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>19. a) Write a program to find mean, median and mode using R.</h3>
+        <div class="answer">
+            <p>Here's a comprehensive R program to calculate mean, median, and mode:</p>
+            
+            <pre># Function to calculate mean
+calculate_mean <- function(x) {
+  return(sum(x) / length(x))
+}
+
+# Function to calculate median
+calculate_median <- function(x) {
+  x_sorted <- sort(x)
+  n <- length(x)
+  
+  if (n %% 2 == 0) {
+    # Even number of elements
+    return((x_sorted[n/2] + x_sorted[n/2 + 1]) / 2)
+  } else {
+    # Odd number of elements
+    return(x_sorted[(n + 1)/2])
+  }
+}
+
+# Function to calculate mode
+calculate_mode <- function(x) {
+  unique_x <- unique(x)
+  counts <- tabulate(match(x, unique_x))
+  modes <- unique_x[counts == max(counts)]
+  
+  # If all values are equally frequent, return NA
+  if (length(modes) == length(unique_x)) {
+    return(NA)
+  } else {
+    return(modes)
+  }
+}
+
+# Test the functions
+data <- c(1, 2, 2, 3, 4, 4, 4, 5, 5)
+
+# Calculate statistics
+mean_val <- calculate_mean(data)
+median_val <- calculate_median(data)
+mode_val <- calculate_mode(data)
+
+# Display results
+cat("Data:", data, "\n")
+cat("Mean:", mean_val, "\n")
+cat("Median:", median_val, "\n")
+cat("Mode:", mode_val, "\n")
+
+# Compare with built-in functions
+cat("\nVerification:\n")
+cat("Built-in mean:", mean(data), "\n")
+cat("Built-in median:", median(data), "\n")
+
+# For mode, R doesn't have a built-in function, but we can check:
+cat("Mode verification (using table):\n")
+print(table(data))</pre>
+            
+            <p><strong>Alternative implementation using a single function:</strong></p>
+            <pre># Function that returns all three measures
+data_summary <- function(x) {
+  # Calculate measures
+  mean_val <- sum(x) / length(x)
+  
+  x_sorted <- sort(x)
+  n <- length(x)
+  median_val <- if (n %% 2 == 0) {
+    (x_sorted[n/2] + x_sorted[n/2 + 1]) / 2
+  } else {
+    x_sorted[(n + 1)/2]
+  }
+  
+  unique_x <- unique(x)
+  counts <- tabulate(match(x, unique_x))
+  mode_val <- unique_x[counts == max(counts)]
+  if (length(mode_val) == length(unique_x)) mode_val <- NA
+  
+  # Return as named list
+  return(list(mean = mean_val, median = median_val, mode = mode_val))
+}
+
+# Usage
+result <- data_summary(c(1, 2, 2, 3, 4, 4, 4, 5, 5))
+print(result)</pre>
+            
+            <p><strong>Handling edge cases:</strong></p>
+            <pre># Test with various datasets
+empty_data <- numeric(0)
+single_value <- 5
+all_unique <- c(1, 2, 3, 4)
+multiple_modes <- c(1, 1, 2, 2, 3)
+
+cat("\nEdge case testing:\n")
+cat("Empty data:", tryCatch(calculate_mean(empty_data), error = function(e) e$message), "\n")
+cat("Single value - Mean:", calculate_mean(single_value), "\n")
+cat("All unique values - Mode:", calculate_mode(all_unique), "\n")
+cat("Multiple modes:", calculate_mode(multiple_modes), "\n")</pre>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>19. b) What is error handling in R? Explain with example.</h3>
+        <div class="answer">
+            <p>Error handling in R refers to the process of anticipating, detecting, and resolving errors or exceptional conditions that may occur during program execution. Proper error handling makes programs more robust and user-friendly.</p>
+            
+            <p><strong>Key concepts in R error handling:</strong></p>
+            <ol>
+                <li><strong>Errors:</strong> Serious problems that stop execution (e.g., missing file, undefined variable)</li>
+                <li><strong>Warnings:</strong> Potential problems that don't stop execution (e.g., NA in calculations)</li>
+                <li><strong>Messages:</strong> Informational output (e.g., progress updates)</li>
+            </ol>
+            
+            <p><strong>Error handling techniques:</strong></p>
+            
+            <p><strong>1. try() function:</strong> Continues execution even if error occurs</p>
+            <pre># Example with try()
+result <- try(log("text"))  # This would normally cause an error
+if (inherits(result, "try-error")) {
+  cat("An error occurred:", geterrmessage(), "\n")
+} else {
+  print(result)
+}</pre>
+            
+            <p><strong>2. tryCatch() function:</strong> More sophisticated error handling</p>
+            <pre># Example with tryCatch()
+read_data <- function(filename) {
+  tryCatch({
+    data <- read.csv(filename)
+    cat("Successfully read", filename, "\n")
+    return(data)
+  },
+  error = function(e) {
+    cat("Error reading file:", e$message, "\n")
+    return(NULL)
+  },
+  warning = function(w) {
+    cat("Warning:", w$message, "\n")
+    return(NULL)
+  })
+}
+
+# Usage
+good_file <- read_data("existing_file.csv")
+bad_file <- read_data("nonexistent_file.csv")</pre>
+            
+            <p><strong>3. stop() function:</strong> Generate custom errors</p>
+            <pre># Function with custom error
+calculate_sqrt <- function(x) {
+  if (x < 0) {
+    stop("Input must be non-negative")
+  }
+  return(sqrt(x))
+}
+
+# Usage
+try(calculate_sqrt(-4))  # Throws custom error</pre>
+            
+            <p><strong>4. warning() function:</strong> Generate warnings</p>
+            <pre># Function with warning
+calculate_ratio <- function(a, b) {
+  if (b == 0) {
+    warning("Division by zero, returning NA")
+    return(NA)
+  }
+  return(a / b)
+}
+
+# Usage
+calculate_ratio(5, 0)  # Issues warning but continues</pre>
+            
+            <p><strong>5. withCallingHandlers():</strong> For more control over handling</p>
+            <pre># Example of withCallingHandlers()
+f <- function() {
+  warning("This is a warning")
+  message("This is a message")
+  42
+}
+
+withCallingHandlers(
+  f(),
+  warning = function(w) {
+    cat("Caught warning:", conditionMessage(w), "\n")
+    invokeRestart("muffleWarning")
+  },
+  message = function(m) {
+    cat("Caught message:", conditionMessage(m), "\n")
+    invokeRestart("muffleMessage")
+  }
+)</pre>
+            
+            <p><strong>Best practices for error handling:</strong></p>
+            <ul>
+                <li>Validate inputs at the start of functions</li>
+                <li>Provide informative error messages</li>
+                <li>Use tryCatch() for complex error handling scenarios</li>
+                <li>Consider logging errors for debugging</li>
+                <li>Don't overuse error handling - sometimes errors should stop execution</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>20. a) Explain Hypothesis testing with bar charts.</h3>
+        <div class="answer">
+            <p>Hypothesis testing with bar charts involves visualizing and comparing group means or proportions to assess whether observed differences are statistically significant. Bar charts are particularly useful for displaying the results of t-tests, ANOVA, or chi-square tests.</p>
+            
+            <p><strong>Steps in hypothesis testing with bar charts:</strong></p>
+            <ol>
+                <li>Formulate null and alternative hypotheses</li>
+                <li>Choose appropriate statistical test</li>
+                <li>Collect and organize data</li>
+                <li>Create bar charts to visualize group differences</li>
+                <li>Add error bars to represent variability or confidence intervals</li>
+                <li>Interpret the visual results in context of statistical tests</li>
+            </ol>
+            
+            <p><strong>Example 1: Two-sample t-test with bar chart</strong></p>
+            <pre># Generate example data
+set.seed(123)
+group1 <- rnorm(30, mean = 50, sd = 10)
+group2 <- rnorm(30, mean = 60, sd = 10)
+
+# Perform t-test
+t_test_result <- t.test(group1, group2)
+
+# Create bar chart with error bars
+means <- c(mean(group1), mean(group2))
+sds <- c(sd(group1), sd(group2))
+n <- c(length(group1), length(group2))
+se <- sds / sqrt(n)  # Standard error
+
+bp <- barplot(means, names.arg = c("Group 1", "Group 2"), 
+        ylim = c(0, max(means + se) * 1.1),
+        main = "Comparison of Group Means with Error Bars",
+        ylab = "Mean Value", col = c("lightblue", "lightgreen"))
+
+# Add error bars (representing standard error)
+arrows(bp, means - se, bp, means + se, angle = 90, code = 3, length = 0.1)
+
+# Add p-value from t-test
+p_value <- format.pval(t_test_result$p.value)
+text(mean(bp), max(means + se) * 0.9, 
+     paste("p-value:", p_value), pos = 3)</pre>
+            
+            <p><strong>Example 2: ANOVA with bar chart</strong></p>
+            <pre># Create data for three groups
+set.seed(123)
+data <- data.frame(
+  value = c(rnorm(30, 50, 10), rnorm(30, 55, 10), rnorm(30, 65, 10)),
+  group = factor(rep(1:3, each = 30))
+)
+
+# Perform ANOVA
+anova_result <- aov(value ~ group, data = data)
+
+# Calculate summary statistics
+library(dplyr)
+summary_stats <- data %>%
+  group_by(group) %>%
+  summarise(
+    mean = mean(value),
+    sd = sd(value),
+    n = n(),
+    se = sd / sqrt(n)
+  )
+
+# Create bar chart
+library(ggplot2)
+ggplot(summary_stats, aes(x = group, y = mean, fill = group)) +
+  geom_bar(stat = "identity") +
+  geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.2) +
+  labs(title = "ANOVA: Comparison of Three Groups",
+       subtitle = paste("ANOVA p-value:", 
+                       format.pval(summary(anova_result)[[1]]$'Pr(>F)'[1])),
+       y = "Mean Value") +
+  theme_minimal()</pre>
+            
+            <p><strong>Example 3: Chi-square test with bar chart (proportions)</strong></p>
+            <pre># Create categorical data
+survey_data <- data.frame(
+  response = c(rep("Yes", 45), rep("No", 30), rep("Maybe", 25)),
+  group = rep(c("A", "B"), each = 50)
+)
+
+# Perform chi-square test
+chi_test <- chisq.test(table(survey_data$response, survey_data$group))
+
+# Create proportion bar chart
+prop_data <- survey_data %>%
+  group_by(group, response) %>%
+  summarise(count = n()) %>%
+  mutate(proportion = count / sum(count))
+
+ggplot(prop_data, aes(x = group, y = proportion, fill = response)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Survey Responses by Group",
+       subtitle = paste("Chi-square p-value:", 
+                       format.pval(chi_test$p.value)),
+       y = "Proportion") +
+  theme_minimal()</pre>
+            
+            <p><strong>Key points when using bar charts for hypothesis testing:</strong></p>
+            <ul>
+                <li>Always include error bars (standard error or confidence intervals)</li>
+                <li>Clearly indicate sample sizes</li>
+                <li>Include p-values or significance indicators (*, **, ***)</li>
+                <li>Use appropriate scaling to avoid misleading visual comparisons</li>
+                <li>Consider alternatives like boxplots when showing distributions is important</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>20. b) Write a note on packages in R.</h3>
+        <div class="answer">
+            <p>Packages in R are collections of functions, data, and documentation that extend the capabilities of base R. They are the fundamental units of reproducible R code and are essential for most data analysis tasks.</p>
+            
+            <p><strong>Key aspects of R packages:</strong></p>
+            
+            <p><strong>1. Package Structure:</strong></p>
+            <ul>
+                <li><strong>R/</strong>: Contains R code files with function definitions</li>
+                <li><strong>man/</strong>: Documentation files (help pages)</li>
+                <li><strong>data/</strong>: Datasets included with the package</li>
+                <li><strong>DESCRIPTION</strong>: Metadata about the package</li>
+                <li><strong>NAMESPACE</strong>: Controls function exports and imports</li>
+            </ul>
+            
+            <p><strong>2. Package Repositories:</strong></p>
+            <ul>
+                <li><strong>CRAN (Comprehensive R Archive Network):</strong> Main repository with over 18,000 packages</li>
+                <li><strong>Bioconductor:</strong> Specialized repository for bioinformatics</li>
+                <li><strong>GitHub:</strong> Many developers host development versions here</li>
+            </ul>
+            
+            <p><strong>3. Package Management:</strong></p>
+            <pre># Installing packages from CRAN
+install.packages("dplyr")
+
+# Installing from Bioconductor
+if (!require("BiocManager"))
+    install.packages("BiocManager")
+BiocManager::install("DESeq2")
+
+# Installing from GitHub
+install.packages("devtools")
+devtools::install_github("tidyverse/ggplot2")
+
+# Loading packages
+library(dplyr)      # Preferred way
+require(ggplot2)    # Alternative
+</pre>
+            
+            <p><strong>4. Popular Package Categories:</strong></p>
+            <ul>
+                <li><strong>Data Manipulation:</strong> dplyr, tidyr, data.table</li>
+                <li><strong>Visualization:</strong> ggplot2, plotly, lattice</li>
+                <li><strong>Machine Learning:</strong> caret, randomForest, xgboost</li>
+                <li><strong>Statistics:</strong> lme4, survival, MASS</li>
+                <li><strong>Reporting:</strong> knitr, rmarkdown, shiny</li>
+            </ul>
+            
+            <p><strong>5. Package Documentation:</strong></p>
+            <pre># Accessing help
+?mean          # Help for a function
+help(package = "dplyr")  # Help for entire package
+vignette("dplyr")    # Access vignettes (tutorials)
+
+# Finding functions
+apropos("mean")  # Find functions containing "mean"
+ls("package:stats")  # List all functions in stats package</pre>
+            
+            <p><strong>6. Creating Your Own Packages:</strong></p>
+            <pre># Using devtools to create a package
+devtools::create("myPackage")  # Creates package structure
+devtools::document()           # Generates documentation
+devtools::install()            # Installs your package</pre>
+            
+            <p><strong>7. Package Dependencies:</strong></p>
+            <ul>
+                <li>Packages can depend on other packages</li>
+                <li>DESCRIPTION file specifies dependencies (Imports, Suggests, Depends)</li>
+                <li>Tools like packrat or renv help manage project-specific package versions</li>
+            </ul>
+            
+            <p><strong>8. Best Practices:</strong></p>
+            <ul>
+                <li>Keep packages updated (update.packages())</li>
+                <li>Be mindful of package conflicts (e.g., dplyr::filter vs stats::filter)</li>
+                <li>Use package versioning for reproducibility</li>
+                <li>Check package licenses before use in commercial projects</li>
+                <li>Remove unused packages to avoid clutter</li>
+            </ul>
+            
+            <p><strong>9. Useful Package Management Commands:</strong></p>
+            <pre># List installed packages
+installed.packages()
+
+# See loaded packages
+search()
+
+# Detach a package
+detach("package:dplyr", unload = TRUE)
+
+# Remove a package
+remove.packages("dplyr")
+
+# Check package version
+packageVersion("ggplot2")
+
+# Update all packages
+update.packages(ask = FALSE)</pre>
+            
+            <p>R's package ecosystem is one of its greatest strengths, providing specialized tools for virtually every statistical and data analysis need. The ability to easily share and install packages has contributed significantly to R's popularity in data science and statistical computing.</p>
+        </div>
+    </div>
+
+</body>
+</html>

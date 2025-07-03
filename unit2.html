@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R Programming Unit-2 Notes</title>
+    <link rel="stylesheet" href="unit.css">
+        <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <header>
+        <h1>Control Structures and Vectors</h1>
+        <p>Comprehensive Notes with Examples for Examination</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#part-a">Part A: Short Answer Questions</a></li>
+            <li><a href="#part-b">Part B: Long Answer Questions</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="part-a">
+            <h2>Part A: Short Answer Questions</h2>
+            <div class="question">
+                <h3>1. Write a while control structure in a R programming with an example?</h3>
+                <p>The <code>while</code> loop in R executes a block of code as long as a condition is <code>TRUE</code>.</p>
+                <ul>
+                    <li><strong>Syntax</strong>:<br>
+                        <pre><code>while (condition) {
+  # Code block
+}</code></pre></li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>i <- 1
+while (i <= 5) {
+  print(i)
+  i <- i + 1
+}
+# Outputs: [1] 1 [1] 2 [1] 3 [1] 4 [1] 5</code></pre>
+                        <p>The loop prints numbers from 1 to 5, incrementing <code>i</code> until the condition <code>i <= 5</code> is <code>FALSE</code>.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>2. Write about next and break in R programming?</h3>
+                <ul>
+                    <li><strong>next</strong>: Skips the current iteration of a loop and moves to the next iteration.<br>
+                        <pre><code>for (i in 1:5) {
+  if (i == 3) next
+  print(i)
+}
+# Outputs: [1] 1 [1] 2 [1] 4 [1] 5</code></pre>
+                        <p>Here, <code>next</code> skips printing <code>3</code>.</p>
+                    </li>
+                    <li><strong>break</strong>: Exits the loop entirely when encountered.<br>
+                        <pre><code>for (i in 1:5) {
+  if (i == 3) break
+  print(i)
+}
+# Outputs: [1] 1 [1] 2</code></pre>
+                        <p>The loop stops when <code>i</code> equals 3.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>3. Write short notes on built-in functions in R programming?</h3>
+                <p>R provides numerous built-in functions for common tasks:</p>
+                <ul>
+                    <li><strong>Mathematical</strong>: <code>sum()</code>, <code>mean()</code>, <code>sqrt()</code>, <code>abs()</code>.</li>
+                    <li><strong>Statistical</strong>: <code>sd()</code>, <code>var()</code>, <code>median()</code>.</li>
+                    <li><strong>Data Manipulation</strong>: <code>length()</code>, <code>dim()</code>, <code>str()</code>.</li>
+                    <li><strong>Type Checking</strong>: <code>is.numeric()</code>, <code>is.character()</code>.</li>
+                </ul>
+                <p><strong>Example</strong>:</p>
+                <pre><code>x <- c(1, 2, 3, 4)
+print(mean(x))  # Outputs 2.5
+print(sqrt(16)) # Outputs 4</code></pre>
+                <p>These functions simplify operations without requiring external packages.</p>
+            </div>
+            <div class="question">
+                <h3>4. How to declare the date and time functions in R programming?</h3>
+                <p>R provides functions like <code>Sys.Date()</code>, <code>Sys.time()</code>, and packages like <code>lubridate</code> for handling dates and times.</p>
+                <ul>
+                    <li><strong>Basic Functions</strong>:
+                        <ul>
+                            <li><code>Sys.Date()</code>: Returns the current date.</li>
+                            <li><code>Sys.time()</code>: Returns the current date and time.</li>
+                            <li><code>as.Date()</code>: Converts strings to date objects.</li>
+                            <li><code>format()</code>: Formats date/time output.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>current_date <- Sys.Date()
+current_time <- Sys.time()
+custom_date <- as.Date("2025-06-26")
+print(current_date)  # Outputs e.g., "2025-06-26"
+print(format(current_time, "%Y-%m-%d %H:%M:%S"))  # Outputs e.g., "2025-06-26 18:19:00"</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>5. What are the variable scoping rules in R programming?</h3>
+                <p>R follows <strong>lexical scoping</strong>:</p>
+                <ul>
+                    <li>Variables defined inside a function are local to that function.</li>
+                    <li>Variables not found in the local environment are searched in the parent environment (e.g., global environment).</li>
+                    <li>Use <code><<-</code> for global assignment within functions.</li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>x <- 10  # Global variable
+my_func <- function() {
+  x <- 5  # Local variable
+  print(x)
+}
+my_func()  # Outputs 5
+print(x)   # Outputs 10 (global x unchanged)</code></pre>
+                        <p>The <code><<-</code> operator modifies global variables:</p>
+                        <pre><code>my_func2 <- function() {
+  x <<- 20
+}
+my_func2()
+print(x)  # Outputs 20</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>6. Write about character strings in R programming?</h3>
+                <p>Character strings in R are sequences of characters stored as the <code>character</code> data type.</p>
+                <ul>
+                    <li><strong>Creation</strong>: Use quotes (<code>""</code> or <code>''</code>).</li>
+                    <li><strong>Functions</strong>:
+                        <ul>
+                            <li><code>paste()</code>, <code>paste0()</code>: Concatenate strings.</li>
+                            <li><code>nchar()</code>: Count characters.</li>
+                            <li><code>toupper()</code>, <code>tolower()</code>: Change case.</li>
+                            <li><code>substr()</code>: Extract substrings.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>str <- "Hello, R!"
+print(nchar(str))      # Outputs 9
+print(toupper(str))    # Outputs "HELLO, R!"
+print(paste(str, "World"))  # Outputs "Hello, R! World"
+print(substr(str, 1, 5))    # Outputs "Hello"</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>7. How to find the length of a vector with an example?</h3>
+                <p>The <code>length()</code> function returns the number of elements in a vector.</p>
+                <ul>
+                    <li><strong>Syntax</strong>: <code>length(vector)</code></li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>vec <- c(10, 20, 30, 40)
+print(length(vec))  # Outputs 4</code></pre>
+                    </li>
+                </ul>
+                <p>For multi-dimensional objects like matrices, use <code>dim()</code> instead.</p>
+            </div>
+            <div class="question">
+                <h3>8. How to extracting elements of a vector using subscripts?</h3>
+                <p>Elements in a vector can be extracted using square brackets <code>[]</code> with:</p>
+                <ul>
+                    <li><strong>Numeric indices</strong>: Access specific positions.</li>
+                    <li><strong>Logical vectors</strong>: Select elements where <code>TRUE</code>.</li>
+                    <li><strong>Negative indices</strong>: Exclude elements.</li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>vec <- c(10, 20, 30, 40, 50)
+print(vec[2])          # Outputs 20
+print(vec[2:4])        # Outputs 20 30 40
+print(vec[c(TRUE, FALSE, TRUE, FALSE, TRUE)])  # Outputs 10 30 50
+print(vec[-1])         # Outputs 20 30 40 50 (excludes first)</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>9. How to deleting elements of matrices and arrays?</h3>
+                <p>To delete elements, use subsetting to exclude specific indices:</p>
+                <ul>
+                    <li><strong>Matrices</strong>: Use <code>[rows, cols]</code> to select rows/columns to keep.</li>
+                    <li><strong>Arrays</strong>: Use similar indexing for higher dimensions.</li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code># Matrix
+mat <- matrix(1:9, nrow=3)
+print(mat)
+# Delete second row
+mat_new <- mat[-2, ]
+print(mat_new)  # Outputs matrix without row 2
+
+# Array
+arr <- array(1:12, dim=c(2, 3, 2))
+arr_new <- arr[, -2, ]  # Delete second column
+print(arr_new)</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>10. Write about scalars in R programming?</h3>
+                <p>Scalars in R are single-element vectors:</p>
+                <ul>
+                    <li>R does not have a distinct scalar type; a scalar is a vector of length 1.</li>
+                    <li>Used for simple values like numbers or strings.</li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>scalar <- 42
+print(length(scalar))  # Outputs 1
+print(scalar + 10)     # Outputs 52
+str_scalar <- "Hello"
+print(length(str_scalar))  # Outputs 1</code></pre>
+                    </li>
+                </ul>
+                <p>Operations on scalars work like vector operations.</p>
+            </div>
+        </section>
+        <section id="part-b">
+            <h2>Part B: Long Answer Questions</h2>
+            <div class="question">
+                <h3>11. a) Explain about control structures with an example in R programming.</h3>
+                <p>Control structures in R manage the flow of execution. They include:</p>
+                <ul>
+                    <li><strong>if-else</strong>: Conditional execution.<br>
+                        <pre><code>x <- 10
+if (x > 5) {
+  print("x is greater than 5")
+} else {
+  print("x is 5 or less")
+}
+# Outputs: "x is greater than 5"</code></pre>
+                    </li>
+                    <li><strong>for</strong>: Iterates over a sequence.<br>
+                        <pre><code>for (i in 1:3) {
+  print(i^2)
+}
+# Outputs: [1] 1 [1] 4 [1] 9</code></pre>
+                    </li>
+                    <li><strong>while</strong>: Executes while a condition is true.<br>
+                        <pre><code>i <- 1
+while (i <= 3) {
+  print(i)
+  i <- i + 1
+}
+# Outputs: [1] 1 [1] 2 [1] 3</code></pre>
+                    </li>
+                    <li><strong>repeat</strong>: Loops indefinitely until <code>break</code>.<br>
+                        <pre><code>i <- 1
+repeat {
+  print(i)
+  i <- i + 1
+  if (i > 3) break
+}
+# Outputs: [1] 1 [1] 2 [1] 3</code></pre>
+                    </li>
+                    <li><strong>next</strong> and <strong>break</strong>: Control loop iterations (see Q2).</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>11. b) Explain about arithmetic and logical operations on vectors.</h3>
+                <ul>
+                    <li><strong>Arithmetic Operations</strong>: R performs element-wise arithmetic on vectors.
+                        <ul>
+                            <li><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code>: Operate on corresponding elements.</li>
+                            <li>If vectors differ in length, the shorter one is recycled.</li>
+                            <li><strong>Example</strong>:<br>
+                                <pre><code>a <- c(1, 2, 3)
+b <- c(4, 5, 6)
+print(a + b)  # Outputs 5 7 9
+print(a * 2)  # Outputs 2 4 6
+print(a ^ 2)  # Outputs 1 4 9</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Logical Operations</strong>: Element-wise logical operations return <code>TRUE</code>/<code>FALSE</code>.
+                        <ul>
+                            <li><code>&</code>, <code>|</code>, <code>!</code>: AND, OR, NOT.</li>
+                            <li><strong>Example</strong>:<br>
+                                <pre><code>x <- c(TRUE, FALSE, TRUE)
+y <- c(FALSE, TRUE, TRUE)
+print(x & y)  # Outputs FALSE FALSE TRUE
+print(x | y)  # Outputs TRUE TRUE TRUE
+print(!x)     # Outputs FALSE TRUE FALSE</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>12. a) Explain about types of vectors with examples in R programming.</h3>
+                <p>Vectors are the basic data structure in R, storing elements of the same type. Types include:</p>
+                <ul>
+                    <li><strong>Numeric</strong>: Stores numbers (integers or doubles).<br>
+                        <pre><code>num_vec <- c(1.5, 2.7, 3.2)
+print(num_vec)  # Outputs 1.5 2.7 3.2</code></pre>
+                    </li>
+                    <li><strong>Integer</strong>: Whole numbers, specified with <code>L</code>.<br>
+                        <pre><code>int_vec <- c(1L, 2L, 3L)
+print(int_vec)  # Outputs 1 2 3</code></pre>
+                    </li>
+                    <li><strong>Character</strong>: Stores strings.<br>
+                        <pre><code>char_vec <- c("apple", "banana")
+print(char_vec)  # Outputs "apple" "banana"</code></pre>
+                    </li>
+                    <li><strong>Logical</strong>: Stores <code>TRUE</code>/<code>FALSE</code>.<br>
+                        <pre><code>log_vec <- c(TRUE, FALSE, TRUE)
+print(log_vec)  # Outputs TRUE FALSE TRUE</code></pre>
+                    </li>
+                    <li><strong>Complex</strong>: Stores complex numbers.<br>
+                        <pre><code>comp_vec <- c(1+2i, 3+4i)
+print(comp_vec)  # Outputs 1+2i 3+4i</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>12. b) Write an R program to create a vector and to access elements in a vector.</h3>
+                <pre><code># Creating vectors
+num_vec <- c(10, 20, 30, 40, 50)
+char_vec <- c("A", "B", "C")
+
+# Accessing elements
+print("Numeric Vector:")
+print(num_vec[2])       # Outputs 20
+print(num_vec[1:3])     # Outputs 10 20 30
+print(num_vec[c(1, 5)]) # Outputs 10 50
+
+print("Character Vector:")
+print(char_vec[2])      # Outputs "B"
+print(char_vec[-1])     # Outputs "B" "C" (excludes first)
+
+# Logical indexing
+print(num_vec[num_vec > 25])  # Outputs 30 40 50</code></pre>
+            </div>
+            <div class="question">
+                <h3>13. a) Explain about vector operations in R programming with examples.</h3>
+                <p>Vector operations in R are element-wise and include:</p>
+                <ul>
+                    <li><strong>Arithmetic</strong>: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code>.<br>
+                        <pre><code>a <- c(1, 2, 3)
+b <- c(4, 5, 6)
+print(a + b)  # Outputs 5 7 9
+print(a * b)  # Outputs 4 10 18</code></pre>
+                    </li>
+                    <li><strong>Logical</strong>: <code>&</code>, <code>|</code>, <code>!</code>.<br>
+                        <pre><code>x <- c(TRUE, FALSE)
+y <- c(FALSE, TRUE)
+print(x & y)  # Outputs FALSE FALSE</code></pre>
+                    </li>
+                    <li><strong>Comparison</strong>: <code>==</code>, <code>!=</code>, <code>></code>, <code><</code>.<br>
+                        <pre><code>print(a > b)  # Outputs FALSE FALSE FALSE</code></pre>
+                    </li>
+                    <li><strong>Recycling</strong>: If vectors differ in length, the shorter is recycled.<br>
+                        <pre><code>c <- c(2)
+print(a + c)  # Outputs 3 4 5 (2 added to each element)</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>13. b) Write a program to create a matrix using cbind() and rbind() functions.</h3>
+                <pre><code># Using cbind() to create a matrix by binding columns
+col1 <- c(1, 2, 3)
+col2 <- c(4, 5, 6)
+mat_cbind <- cbind(col1, col2)
+print("Matrix using cbind():")
+print(mat_cbind)
+# Outputs:
+#      col1 col2
+# [1,]    1    4
+# [2,]    2    5
+# [3,]    3    6
+
+# Using rbind() to create a matrix by binding rows
+row1 <- c(7, 8)
+row2 <- c(9, 10)
+mat_rbind <- rbind(row1, row2)
+print("Matrix using rbind():")
+print(mat_rbind)
+# Outputs:
+#      [,1] [,2]
+# row1    7    8
+# row2    9   10</code></pre>
+            </div>
+            <div class="question">
+                <h3>14. a) Explain about functions in R programming.</h3>
+                <p>Functions in R are objects that perform specific tasks.</p>
+                <ul>
+                    <li><strong>Definition</strong>: Use <code>function()</code> to create.<br>
+                        <pre><code>square <- function(x) {
+  return(x^2)
+}</code></pre>
+                    </li>
+                    <li><strong>Calling</strong>: Use the function name with arguments.<br>
+                        <pre><code>print(square(5))  # Outputs 25</code></pre>
+                    </li>
+                    <li><strong>Default Arguments</strong>: Specify default values.<br>
+                        <pre><code>add <- function(a, b=10) {
+  return(a + b)
+}
+print(add(5))     # Outputs 15 (uses default b=10)
+print(add(5, 20)) # Outputs 25</code></pre>
+                    </li>
+                    <li><strong>Anonymous Functions</strong>: Used without naming.<br>
+                        <pre><code>(function(x) x*2)(3)  # Outputs 6</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>14. b) Explain about vectors and subscripts and generating sequences in R programming.</h3>
+                <ul>
+                    <li><strong>Vectors</strong>: One-dimensional arrays of the same type.<br>
+                        <pre><code>vec <- c(1, 2, 3)</code></pre>
+                    </li>
+                    <li><strong>Subscripts</strong>: Access elements using <code>[]</code>.
+                        <ul>
+                            <li>Numeric: <code>vec[2]</code> (outputs 2).</li>
+                            <li>Logical: <code>vec[vec > 1]</code> (outputs 2 3).</li>
+                            <li>Negative: <code>vec[-1]</code> (excludes first element).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Generating Sequences</strong>:
+                        <ul>
+                            <li><code>:</code>: Creates sequences with step 1.<br>
+                                <pre><code>seq1 <- 1:5  # Outputs 1 2 3 4 5</code></pre>
+                            </li>
+                            <li><code>seq()</code>: Custom sequences.<br>
+                                <pre><code>seq2 <- seq(from=1, to=10, by=2)  # Outputs 1 3 5 7 9</code></pre>
+                            </li>
+                            <li><code>rep()</code>: Repeats elements.<br>
+                                <pre><code>rep_vec <- rep(1, times=3)  # Outputs 1 1 1</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>15. a) Explain about multiple and single element vector creation in R programming.</h3>
+                <ul>
+                    <li><strong>Single Element Vector</strong> (Scalar):<br>
+                        <pre><code>single <- 42
+print(length(single))  # Outputs 1
+print(single)         # Outputs 42</code></pre>
+                    </li>
+                    <li><strong>Multiple Element Vector</strong>:
+                        <ul>
+                            <li>Use <code>c()</code> to combine elements.</li>
+                            <li>Use sequences or repetition.</li>
+                            <li><strong>Example</strong>:<br>
+                                <pre><code>multi <- c(10, 20, 30)
+print(multi)  # Outputs 10 20 30
+seq_vec <- 1:5
+print(seq_vec)  # Outputs 1 2 3 4 5
+rep_vec <- rep("A", 3)
+print(rep_vec)  # Outputs "A" "A" "A"</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>15. b) Explain about adding and deleting vector elements. With examples.</h3>
+                <ul>
+                    <li><strong>Adding Elements</strong>:
+                        <ul>
+                            <li>Use <code>c()</code> to append elements.</li>
+                            <li>Use indexing to insert at specific positions.</li>
+                            <li><strong>Example</strong>:<br>
+                                <pre><code>vec <- c(1, 2, 3)
+vec <- c(vec, 4)      # Append 4
+print(vec)            # Outputs 1 2 3 4
+vec[5] <- 5           # Add at index 5
+print(vec)            # Outputs 1 2 3 4 5</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Deleting Elements</strong>:
+                        <ul>
+                            <li>Use negative indexing to exclude elements.</li>
+                            <li><strong>Example</strong>:<br>
+                                <pre><code>vec <- c(10, 20, 30, 40)
+vec <- vec[-2]        # Delete second element
+print(vec)            # Outputs 10 30 40
+vec <- vec[-c(1, 3)]  # Delete multiple elements
+print(vec)            # Outputs 30</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+   <footer>
+        <div class="footer-content">
+       
+            <div class="social-links">
+                <a href="https://github.com/Sudarshanbadli" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/sudarshan_badli?t=4rxkwhdm80fYCRGuyv-nSg&s=09" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://codepen.io/Sudarshan-Badli" target="_blank" aria-label="Codepen"><i class="fab fa-codepen"></i></a>
+                 <a href="https://www.instagram.com/sudarshanbadli_7?igsh=azU0MDVibTB5bWFo" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          
+   
+        <p><p>&copy; 2025 Sudarshan Badli. All rights reserved.</p>
+                    
+            <p class="mt-2">Made with ❤️ and <i class="fas fa-code text-white-500"></i></p>
+        </div>
+    </footer>
+    <script src="unit.js"></script>
+</body>
+</html>

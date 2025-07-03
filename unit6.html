@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R Programming: Graphics and Statistics</title>
+    <link rel="stylesheet" href="unit.css">
+        <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Graphics and Statistics</h1>
+        <p>Comprehensive Notes with Examples for Examination</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#part-a">Part A: Short Answer Questions</a></li>
+            <li><a href="#part-b">Part B: Long Answer Questions</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="part-a">
+            <h2>Part A: Short Answer Questions</h2>
+            <div class="question">
+                <h3>1. What is the purpose of the <code>plot()</code> function in R?</h3>
+                <p>The <code>plot()</code> function in R is a generic function used to create a variety of plots, such as scatterplots, line plots, or other visualizations, depending on the input data and parameters.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>x <- 1:5
+y <- c(2, 4, 6, 8, 10)
+plot(x, y, main = "Basic Plot", xlab = "X", ylab = "Y")</code></pre>
+            </div>
+            <div class="question">
+                <h3>2. How do you create a line plot in R?</h3>
+                <p>Use the <code>plot()</code> function with <code>type = "l"</code> to create a line plot, connecting data points with lines.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>x <- 1:5
+y <- c(1, 3, 5, 7, 9)
+plot(x, y, type = "l", main = "Line Plot", xlab = "X", ylab = "Y", col = "blue")</code></pre>
+            </div>
+            <div class="question">
+                <h3>3. What is a scatterplot in R, and how is it created?</h3>
+                <p>A scatterplot displays individual data points as dots on a two-dimensional plane. It is created using <code>plot()</code> with <code>type = "p"</code> (default).</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>x <- 1:5
+y <- c(2, 4, 6, 8, 10)
+plot(x, y, type = "p", main = "Scatterplot", xlab = "X", ylab = "Y", pch = 19, col = "red")</code></pre>
+            </div>
+            <div class="question">
+                <h3>4. How do you create a pie chart in R?</h3>
+                <p>Use the <code>pie()</code> function to create a pie chart, specifying a vector of values and optional labels.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>slices <- c(10, 20, 30, 40)
+labels <- c("A", "B", "C", "D")
+pie(slices, labels = labels, main = "Pie Chart", col = c("red", "blue", "green", "yellow"))</code></pre>
+            </div>
+            <div class="question">
+                <h3>5. How do you create a bar plot in R?</h3>
+                <p>Use the <code>barplot()</code> function to create a bar plot, specifying heights and optional names for bars.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>heights <- c(5, 10, 15)
+names <- c("Group1", "Group2", "Group3")
+barplot(heights, names.arg = names, main = "Bar Plot", xlab = "Groups", ylab = "Values", col = "blue")</code></pre>
+            </div>
+            <div class="question">
+                <h3>6. What is the purpose of R statistics?</h3>
+                <p>R statistics involves using R for data analysis, including descriptive statistics, hypothesis testing, regression, and visualization, to derive insights from data.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>data <- c(1, 2, 3, 4, 5)
+summary(data)  # Outputs min, max, quartiles, mean</code></pre>
+            </div>
+            <div class="question">
+                <h3>7. What is a data set in R, and how is it created?</h3>
+                <p>A data set in R is a collection of data, typically stored as a data frame, list, or vector. Data frames are commonly created using <code>data.frame()</code>.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>df <- data.frame(name = c("Alice", "Bob"), age = c(25, 30))
+print(df)
+# Output:
+#   name age
+# 1 Alice  25
+# 2   Bob  30</code></pre>
+            </div>
+            <div class="question">
+                <h3>8. How do you find the maximum and minimum values in R?</h3>
+                <p>Use <code>max()</code> and <code>min()</code> functions to find the largest and smallest values in a vector.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>data <- c(10, 5, 15, 3, 8)
+print(max(data))  # Outputs: 15
+print(min(data))  # Outputs: 3</code></pre>
+            </div>
+            <div class="question">
+                <h3>9. How do you calculate the mean, median, and mode in R?</h3>
+                <p>
+                    <ul>
+                        <li><strong>Mean</strong>: Use <code>mean()</code> for the arithmetic average.</li>
+                        <li><strong>Median</strong>: Use <code>median()</code> for the middle value.</li>
+                        <li><strong>Mode</strong>: R has no built-in mode function; use a custom function or <code>table()</code>.</li>
+                    </ul>
+                </p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>data <- c(1, 2, 2, 3, 4)
+print(mean(data))    # Outputs: 2.4
+print(median(data))  # Outputs: 2
+mode <- as.numeric(names(sort(table(data), decreasing = TRUE)[1]))
+print(mode)          # Outputs: 2</code></pre>
+            </div>
+            <div class="question">
+                <h3>10. What are percentiles in R, and how are they calculated?</h3>
+                <p>Percentiles indicate the value below which a given percentage of data falls. Use <code>quantile()</code> to calculate percentiles.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code>data <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+print(quantile(data, probs = c(0.25, 0.5, 0.75)))
+# Output:
+# 25% 50% 75%
+# 3.25 5.50 7.75</code></pre>
+            </div>
+        </section>
+        <section id="part-b">
+            <h2>Part B: Long Answer Questions</h2>
+            <div class="question">
+                <h3>11. a) Explain the role of graphics in R for statistical analysis.</h3>
+                <p>Graphics in R are essential for visualizing data, identifying patterns, and communicating results:</p>
+                <ul>
+                    <li><strong>Exploratory Analysis</strong>: Plots like scatterplots and histograms reveal data distributions and relationships.</li>
+                    <li><strong>Model Diagnostics</strong>: Residual plots and Q-Q plots assess model assumptions.</li>
+                    <li><strong>Communication</strong>: Pie charts and bar plots present categorical data clearly.</li>
+                    <li><strong>Customization</strong>: R’s graphics (e.g., <code>plot()</code>, <code>ggplot2</code>) allow customization of colors, labels, and scales.</li>
+                </ul>
+                <p><strong>Example</strong>:</p>
+                <pre><code>data <- mtcars
+plot(data$mpg, data$hp, main = "MPG vs Horsepower", xlab = "MPG", ylab = "Horsepower", pch = 19)</code></pre>
+            </div>
+            <div class="question">
+                <h3>11. b) Write an R program to create a scatterplot with customized features.</h3>
+                <pre><code># Sample data
+x <- 1:10
+y <- c(2, 4, 5, 4, 5, 6, 8, 7, 9, 10)
+
+# Create scatterplot with customization
+plot(x, y, type = "p", main = "Customized Scatterplot", 
+     xlab = "X-Axis", ylab = "Y-Axis", 
+     pch = 19, col = "blue", cex = 1.5, 
+     xlim = c(0, 12), ylim = c(0, 12))
+grid()  # Add grid
+abline(lm(y ~ x), col = "red")  # Add regression line</code></pre>
+            </div>
+            <div class="question">
+                <h3>12. a) Explain how to create and customize line plots in R.</h3>
+                <p>Line plots in R are created using <code>plot()</code> with <code>type = "l"</code>. Customization includes:</p>
+                <ul>
+                    <li><strong>Line Type</strong>: Use <code>lty</code> (e.g., "solid", "dashed").</li>
+                    <li><strong>Color</strong>: Use <code>col</code> for line color.</li>
+                    <li><strong>Width</strong>: Use <code>lwd</code> for line thickness.</li>
+                    <li><strong>Axes and Labels</strong>: Use <code>xlab</code>, <code>ylab</code>, <code>main</code> for titles.</li>
+                </ul>
+                <p><strong>Example</strong>:</p>
+                <pre><code>x <- 1:10
+y <- sin(x)
+plot(x, y, type = "l", main = "Sine Wave", xlab = "X", ylab = "sin(X)", col = "blue", lwd = 2)</code></pre>
+            </div>
+            <div class="question">
+                <h3>12. b) Write an R program to create a line plot with multiple lines.</h3>
+                <pre><code># Sample data
+x <- 1:10
+y1 <- x^2
+y2 <- x^3
+
+# Create line plot with multiple lines
+plot(x, y1, type = "l", col = "blue", lwd = 2, main = "Multiple Line Plot", 
+     xlab = "X", ylab = "Y", ylim = c(0, 1000))
+lines(x, y2, col = "red", lwd = 2, lty = "dashed")
+legend("topleft", legend = c("y = x^2", "y = x^3"), col = c("blue", "red"), lty = c("solid", "dashed"))</code></pre>
+            </div>
+            <div class="question">
+                <h3>13. a) Explain the creation and use of pie charts in R.</h3>
+                <p>Pie charts in R are created using <code>pie()</code> to represent proportions of categorical data:</p>
+                <ul>
+                    <li><strong>Input</strong>: A vector of values and optional labels.</li>
+                    <li><strong>Customization</strong>: Use <code>col</code> for colors, <code>main</code> for title, <code>labels</code> for category names.</li>
+                    <li><strong>Use</strong>: Best for showing relative proportions, but limited for complex data.</li>
+                </ul>
+                <p><strong>Example</strong>:</p>
+                <pre><code>slices <- c(30, 20, 50)
+labels <- c("A", "B", "C")
+pie(slices, labels = labels, main = "Pie Chart Example", col = rainbow(3))</code></pre>
+            </div>
+            <div class="question">
+                <h3>13. b) Write an R program to create a pie chart with percentage labels.</h3>
+                <pre><code># Sample data
+slices <- c(25, 35, 40)
+labels <- c("Category A", "Category B", "Category C")
+
+# Calculate percentages
+pct <- round(slices / sum(slices) * 100)
+labels <- paste(labels, pct, "%", sep = " ")
+
+# Create pie chart
+pie(slices, labels = labels, main = "Pie Chart with Percentages", 
+    col = c("lightblue", "lightgreen", "lightpink"))</code></pre>
+            </div>
+            <div class="question">
+                <h3>14. a) Explain the creation and customization of bar plots in R.</h3>
+                <p>Bar plots in R are created using <code>barplot()</code> to display categorical data:</p>
+                <ul>
+                    <li><strong>Input</strong>: A vector or matrix of heights.</li>
+                    <li><strong>Customization</strong>:
+                        <ul>
+                            <li><code>names.arg</code>: Labels for bars.</li>
+                            <li><code>col</code>: Bar colors.</li>
+                            <li><code>horiz</code>: Horizontal bars if <code>TRUE</code>.</li>
+                            <li><code>main</code>, <code>xlab</code>, <code>ylab</code>: Titles and labels.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p><strong>Example</strong>:</p>
+                <pre><code>heights <- c(10, 20, 30)
+barplot(heights, names.arg = c("A", "B", "C"), col = "blue", main = "Bar Plot")</code></pre>
+            </div>
+            <div class="question">
+                <h3>14. b) Write an R program to create a grouped bar plot.</h3>
+                <pre><code># Sample data (matrix for grouped bars)
+data <- matrix(c(10, 15, 20, 25, 30, 35), nrow = 2, byrow = TRUE)
+colnames(data) <- c("Group1", "Group2", "Group3")
+rownames(data) <- c("Type1", "Type2")
+
+# Create grouped bar plot
+barplot(data, beside = TRUE, col = c("blue", "red"), 
+        main = "Grouped Bar Plot", xlab = "Groups", ylab = "Values")
+legend("topleft", legend = rownames(data), fill = c("blue", "red"))</code></pre>
+            </div>
+            <div class="question">
+                <h3>15. a) Explain descriptive statistics in R (max, min, mean, median, mode, percentiles).</h3>
+                <p>Descriptive statistics summarize data:</p>
+                <ul>
+                    <li><strong>Max/Min</strong>: <code>max()</code> and <code>min()</code> find the largest/smallest values.</li>
+                    <li><strong>Mean</strong>: <code>mean()</code> computes the average.</li>
+                    <li><strong>Median</strong>: <code>median()</code> finds the middle value.</li>
+                    <li><strong>Mode</strong>: No built-in function; use <code>table()</code> to find the most frequent value.</li>
+                    <li><strong>Percentiles</strong>: <code>quantile()</code> computes values at specified percentiles.</li>
+                </ul>
+                <p><strong>Example</strong>:</p>
+                <pre><code>data <- c(1, 2, 2, 3, 4, 5)
+print(max(data))      # Outputs: 5
+print(min(data))      # Outputs: 1
+print(mean(data))     # Outputs: 2.833
+print(median(data))   # Outputs: 2.5
+print(quantile(data, probs = c(0.25, 0.75)))  # Outputs: 25% = 2, 75% = 4</code></pre>
+            </div>
+            <div class="question">
+                <h3>15. b) Write an R program to compute and display descriptive statistics for a data set.</h3>
+                <pre><code># Sample data set
+data <- c(10, 15, 15, 20, 25, 30, 35, 40)
+
+# Compute descriptive statistics
+max_val <- max(data)
+min_val <- min(data)
+mean_val <- mean(data)
+median_val <- median(data)
+mode_val <- as.numeric(names(sort(table(data), decreasing = TRUE)[1]))
+percentiles <- quantile(data, probs = c(0.25, 0.5, 0.75))
+
+# Display results
+cat("Max:", max_val, "\n")
+cat("Min:", min_val, "\n")
+cat("Mean:", mean_val, "\n")
+cat("Median:", median_val, "\n")
+cat("Mode:", mode_val, "\n")
+cat("Percentiles:\n")
+print(percentiles)
+
+# Visualize with boxplot
+boxplot(data, main = "Boxplot of Data", col = "lightblue")
+# Output:
+# Max: 40
+# Min: 10
+# Mean: 23.75
+# Median: 22.5
+# Mode: 15
+# Percentiles:
+#   25%   50%   75%
+# 15.00 22.50 32.50</code></pre>
+            </div>
+        </section>
+    </main>
+    <footer>
+         <div class="footer-content">
+       
+            <div class="social-links">
+                <a href="https://github.com/Sudarshanbadli" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/sudarshan_badli?t=4rxkwhdm80fYCRGuyv-nSg&s=09" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://codepen.io/Sudarshan-Badli" target="_blank" aria-label="Codepen"><i class="fab fa-codepen"></i></a>
+                 <a href="https://www.instagram.com/sudarshanbadli_7?igsh=azU0MDVibTB5bWFo" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          
+   
+        <p><p>&copy; 2025 Sudarshan Badli. All rights reserved.</p>
+                    
+            <p class="mt-2">Made with ❤️ and <i class="fas fa-code text-white-500"></i></p>
+        </div>
+    </footer>
+    <script src="unit.js"></script>
+</body>
+</html>

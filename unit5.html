@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R Programming Unit-5 Notes</title>
+    <link rel="stylesheet" href="unit.css">
+        <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1> Object-Oriented Programming</h1>
+        <p>Comprehensive Notes with Examples for Examination</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#part-a">Part A: Short Answer Questions</a></li>
+            <li><a href="#part-b">Part B: Long Answer Questions</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="part-a">
+            <h2>Part A: Short Answer Questions</h2>
+            <div class="question">
+                <h3>1. How to create an S3 class?</h3>
+                <p>An S3 class in R is created by assigning a class attribute to an object (usually a list) using the <code>class()</code> function.</p>
+                <ul>
+                    <li><strong>Steps</strong>:
+                        <ol>
+                            <li>Create a list or object.</li>
+                            <li>Assign the class name using <code>class()</code>.</li>
+                        </ol>
+                    </li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code># Create an S3 object
+person <- list(name = "Alice", age = 25)
+class(person) <- "Person"
+print(person)
+# Output:
+# $name
+# [1] "Alice"
+# $age
+# [1] 25
+# attr(,"class")
+# [1] "Person"</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>2. Write short notes on classes in R.</h3>
+                <p>R supports three main object-oriented systems: <strong>S3</strong>, <strong>S4</strong>, and <strong>Reference Classes (RC)</strong>.</p>
+                <ul>
+                    <li><strong>S3 Classes</strong>: Simple, informal system using a class attribute. Methods are defined via generic functions (e.g., <code>print()</code>, <code>summary()</code>).</li>
+                    <li><strong>S4 Classes</strong>: Formal system with strict definitions using <code>setClass()</code>. Supports slots and validation.</li>
+                    <li><strong>Reference Classes</strong>: Similar to OOP in other languages, with mutable objects and methods defined within the class.</li>
+                    <li><strong>Example</strong> (S3 class):<br>
+                        <pre><code>student <- list(name = "Bob", grade = "A")
+class(student) <- "Student"
+print(class(student))  # Outputs: "Student"</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>3. How to create an S4 class?</h3>
+                <p>An S4 class is created using <code>setClass()</code> to define the class structure, including slots (fields) and their types.</p>
+                <ul>
+                    <li><strong>Syntax</strong>: <code>setClass("ClassName", slots = list(slot1 = "type1", slot2 = "type2"))</code></li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>setClass("Person", slots = list(name = "character", age = "numeric"))
+person <- new("Person", name = "Alice", age = 25)
+print(person)
+# Output:
+# An object of class "Person"
+# Slot "name":
+# [1] "Alice"
+# Slot "age":
+# [1] 25</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>4. Write about reference classes in R?</h3>
+                <p>Reference classes (RC) in R provide a more traditional OOP approach with mutable objects and methods defined within the class. They are created using <code>setRefClass()</code>.</p>
+                <ul>
+                    <li><strong>Features</strong>:
+                        <ul>
+                            <li>Objects are mutable (changes affect the original object).</li>
+                            <li>Methods are defined within the class.</li>
+                            <li>Supports inheritance and encapsulation.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>Person <- setRefClass("Person", fields = list(name = "character", age = "numeric"),
+                              methods = list(show = function() {
+                                cat("Name:", name, "\nAge:", age, "\n")
+                              }))
+p <- Person$new(name = "Bob", age = 30)
+p$show()
+# Output:
+# Name: Bob
+# Age: 30</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>5. Write an inheritance of OOP concept in R?</h3>
+                <p>Inheritance in R allows a class to inherit properties and methods from another class.</p>
+                <ul>
+                    <li><strong>S3</strong>: Achieved by assigning multiple classes to an object.<br>
+                        <pre><code>student <- list(name = "Alice", grade = "A")
+class(student) <- c("Student", "Person")</code></pre>
+                    </li>
+                    <li><strong>S4</strong>: Use <code>setClass()</code> with the <code>contains</code> argument.<br>
+                        <pre><code>setClass("Person", slots = list(name = "character"))
+setClass("Student", slots = list(grade = "character"), contains = "Person")
+s <- new("Student", name = "Alice", grade = "A")</code></pre>
+                    </li>
+                    <li><strong>Reference Classes</strong>: Use the <code>inherit</code> argument in <code>setRefClass()</code>.<br>
+                        <pre><code>Person <- setRefClass("Person", fields = list(name = "character"))
+Student <- setRefClass("Student", fields = list(grade = "character"), contains = "Person")</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>6. Define abstraction of OOP in R.</h3>
+                <p>Abstraction in R hides complex implementation details and exposes only necessary functionality.</p>
+                <ul>
+                    <li>In <strong>S3</strong>, abstraction is achieved by defining generic functions (e.g., <code>print()</code>).</li>
+                    <li>In <strong>S4</strong>, slots and methods encapsulate data and behavior, hiding internal details.</li>
+                    <li>In <strong>Reference Classes</strong>, methods provide a clean interface to interact with fields.</li>
+                    <li><strong>Example</strong> (S4 abstraction):<br>
+                        <pre><code>setClass("Person", slots = list(name = "character"))
+setMethod("show", "Person", function(object) {
+  cat("Person Name:", object@name, "\n")
+})
+p <- new("Person", name = "Alice")
+p  # Calls show method, outputs: Person Name: Alice</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>7. Write a functions of S class in R?</h3>
+                <p>The term "S class" typically refers to <strong>S3</strong> or <strong>S4</strong> classes in R:</p>
+                <ul>
+                    <li><strong>S3 Functions</strong>: Use generic functions like <code>print()</code>, <code>summary()</code>, or custom generics with <code>UseMethod()</code>.<br>
+                        <pre><code>print.Student <- function(x) {
+  cat("Student:", x$name, "\n")
+}
+student <- list(name = "Bob")
+class(student) <- "Student"
+print(student)  # Outputs: Student: Bob</code></pre>
+                    </li>
+                    <li><strong>S4 Functions</strong>: Define methods using <code>setMethod()</code> for specific classes.<br>
+                        <pre><code>setClass("Person", slots = list(name = "character"))
+setMethod("show", "Person", function(object) {
+  cat("Name:", object@name, "\n")
+})</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>8. Define the class and object in R?</h3>
+                <ul>
+                    <li><strong>Class</strong>: A blueprint defining the structure (attributes) and behavior (methods) of objects. In R, classes are defined using S3 (<code>class()</code>), S4 (<code>setClass()</code>), or Reference Classes (<code>setRefClass()</code>).</li>
+                    <li><strong>Object</strong>: An instance of a class containing specific data.</li>
+                    <li><strong>Example</strong> (S3):<br>
+                        <pre><code># Class definition
+person <- list(name = "Alice", age = 25)
+class(person) <- "Person"
+# Object
+print(person)  # Object of class "Person"</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>9. What is the definition of polymorphism?</h3>
+                <p>Polymorphism in R allows different classes to be treated similarly through generic functions. A single function (e.g., <code>print()</code>) behaves differently based on the object’s class.</p>
+                <ul>
+                    <li><strong>S3 Polymorphism</strong>: Generic functions dispatch methods based on class.<br>
+                        <pre><code>print.Student <- function(x) cat("Student:", x$name, "\n")
+print.Person <- function(x) cat("Person:", x$name, "\n")
+obj <- list(name = "Alice")
+class(obj) <- "Student"
+print(obj)  # Outputs: Student: Alice</code></pre>
+                    </li>
+                    <li><strong>S4 Polymorphism</strong>: Use <code>setGeneric()</code> and <code>setMethod()</code>.<br>
+                        <pre><code>setGeneric("display", function(x) standardGeneric("display"))
+setMethod("display", "Person", function(x) cat("Person:", x@name, "\n"))</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>10. Write about encapsulation of OOP in R?</h3>
+                <p>Encapsulation in R hides internal details of an object and exposes only necessary interfaces.</p>
+                <ul>
+                    <li><strong>S3</strong>: Limited encapsulation, as lists are openly accessible.<br>
+                        <pre><code>person <- list(name = "Alice")
+class(person) <- "Person"
+person$name  # Directly accessible</code></pre>
+                    </li>
+                    <li><strong>S4</strong>: Slots provide better encapsulation, accessed via <code>@</code> or getters/setters.<br>
+                        <pre><code>setClass("Person", slots = list(name = "character"))
+setMethod("getName", "Person", function(object) object@name)</code></pre>
+                    </li>
+                    <li><strong>Reference Classes</strong>: Fields are encapsulated, and methods control access.<br>
+                        <pre><code>Person <- setRefClass("Person", fields = list(name = "character"),
+                              methods = list(getName = function() name))
+p <- Person$new(name = "Bob")
+p$getName()  # Outputs: "Bob"</code></pre>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section id="part-b">
+            <h2>Part B: Long Answer Questions</h2>
+            <div class="question">
+                <h3>11. a) Briefly explain about object-oriented programming concepts in R.</h3>
+                <p>R supports OOP through <strong>S3</strong>, <strong>S4</strong>, and <strong>Reference Classes</strong>:</p>
+                <ul>
+                    <li><strong>Encapsulation</strong>: Hides internal data, exposing only necessary methods (stronger in S4 and RC).</li>
+                    <li><strong>Inheritance</strong>: Allows classes to inherit properties/methods (via <code>contains</code> in S4, <code>inherit</code> in RC, or multiple classes in S3).</li>
+                    <li><strong>Polymorphism</strong>: Generic functions dispatch methods based on class (e.g., <code>print()</code> in S3, <code>setMethod()</code> in S4).</li>
+                    <li><strong>Abstraction</strong>: Simplifies interaction by hiding implementation details (via methods in S4/RC).</li>
+                    <li><strong>Example</strong> (S3 polymorphism):<br>
+                        <pre><code>print.Student <- function(x) cat("Student:", x$name, "\n")
+student <- list(name = "Alice")
+class(student) <- "Student"
+print(student)  # Outputs: Student: Alice</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>11. b) Write an R program to create an S3 class and S3 object.</h3>
+                <pre><code># Create an S3 class and object
+createPerson <- function(name, age) {
+  person <- list(name = name, age = age)
+  class(person) <- "Person"
+  return(person)
+}
+
+# Define a print method for the Person class
+print.Person <- function(x) {
+  cat("Person Name:", x$name, "\nAge:", x$age, "\n")
+}
+
+# Create an S3 object
+p <- createPerson("Alice", 25)
+
+# Print the object
+print(p)
+# Output:
+# Person Name: Alice
+# Age: 25</code></pre>
+            </div>
+            <div class="question">
+                <h3>12. a) Explain about objects and classes in R.</h3>
+                <ul>
+                    <li><strong>Class</strong>: A template defining attributes (data) and methods (functions). R supports:
+                        <ul>
+                            <li><strong>S3</strong>: Informal, uses <code>class()</code> to assign a class to a list.</li>
+                            <li><strong>S4</strong>: Formal, uses <code>setClass()</code> with slots for strict structure.</li>
+                            <li><strong>Reference Classes</strong>: Uses <code>setRefClass()</code> for mutable objects with methods.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Object</strong>: An instance of a class with specific data.</li>
+                    <li><strong>Example</strong> (S4):<br>
+                        <pre><code>setClass("Student", slots = list(name = "character", grade = "character"))
+s <- new("Student", name = "Bob", grade = "A")
+print(s)
+# Output:
+# An object of class "Student"
+# Slot "name":
+# [1] "Bob"
+# Slot "grade":
+# [1] "A"</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>12. b) Write an R program to create a reference class and modify its methods.</h3>
+                <pre><code># Define a reference class
+Person <- setRefClass("Person",
+                      fields = list(name = "character", age = "numeric"),
+                      methods = list(
+                        show = function() {
+                          cat("Name:", name, "\nAge:", age, "\n")
+                        }
+                      ))
+
+# Create an object
+p <- Person$new(name = "Alice", age = 25)
+p$show()
+# Output:
+# Name: Alice
+# Age: 25
+
+# Modify the show method
+Person$methods(show = function() {
+  cat("Person Details: ", name, " (", age, " years)\n")
+})
+
+# Call modified method
+p$show()
+# Output:
+# Person Details: Alice (25 years)</code></pre>
+            </div>
+            <div class="question">
+                <h3>13. a) Explain about S3 class in R.</h3>
+                <p>S3 is R’s simplest OOP system, relying on generic functions and a class attribute:</p>
+                <ul>
+                    <li><strong>Creation</strong>: Assign a class to a list using <code>class()</code>.</li>
+                    <li><strong>Methods</strong>: Define methods using generic functions (e.g., <code>print.ClassName</code>).</li>
+                    <li><strong>Polymorphism</strong>: Generic functions dispatch based on the object’s class.</li>
+                    <li><strong>Advantages</strong>: Simple and flexible.</li>
+                    <li><strong>Disadvantages</strong>: Lacks formal structure and validation.</li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>student <- list(name = "Alice", grade = "A")
+class(student) <- "Student"
+print.Student <- function(x) cat("Student:", x$name, ", Grade:", x$grade, "\n")
+print(student)  # Outputs: Student: Alice, Grade: A</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>13. b) Write an R program to write generic functions in S4 class.</h3>
+                <pre><code># Define an S4 class
+setClass("Employee", slots = list(name = "character", salary = "numeric"))
+
+# Create a generic function
+setGeneric("display", function(object) standardGeneric("display"))
+
+# Define a method for the Employee class
+setMethod("display", "Employee", function(object) {
+  cat("Employee:", object@name, ", Salary:", object@salary, "\n")
+})
+
+# Create an S4 object
+emp <- new("Employee", name = "Bob", salary = 50000)
+
+# Call the generic function
+display(emp)
+# Output:
+# Employee: Bob, Salary: 50000</code></pre>
+            </div>
+            <div class="question">
+                <h3>14. a) Explain about S4 class in R.</h3>
+                <p>S4 classes are a formal OOP system in R, providing strict structure and validation:</p>
+                <ul>
+                    <li><strong>Creation</strong>: Use <code>setClass()</code> to define slots (fields) and their types.</li>
+                    <li><strong>Methods</strong>: Defined using <code>setMethod()</code> for generics created with <code>setGeneric()</code>.</li>
+                    <li><strong>Inheritance</strong>: Use <code>contains</code> to inherit from another class.</li>
+                    <li><strong>Validation</strong>: Slots can have validation rules.</li>
+                    <li><strong>Advantages</strong>: Type safety, formal structure.</li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code>setClass("Person", slots = list(name = "character", age = "numeric"))
+setMethod("show", "Person", function(object) {
+  cat("Name:", object@name, ", Age:", object@age, "\n")
+})
+p <- new("Person", name = "Alice", age = 25)
+p  # Outputs: Name: Alice, Age: 25</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>14. b) Write an R program to create an S4 class and S4 object.</h3>
+                <pre><code># Define an S4 class
+setClass("Student", slots = list(name = "character", grade = "character"))
+
+# Define a show method
+setMethod("show", "Student", function(object) {
+  cat("Student Name:", object@name, "\nGrade:", object@grade, "\n")
+})
+
+# Create an S4 object
+s <- new("Student", name = "Charlie", grade = "A")
+
+# Display the object
+s
+# Output:
+# Student Name: Charlie
+# Grade: A</code></pre>
+            </div>
+            <div class="question">
+                <h3>15. a) Explain about inheritance of S4 class.</h3>
+                <p>S4 inheritance allows a class to inherit slots and methods from a parent class using the <code>contains</code> argument in <code>setClass()</code>.</p>
+                <ul>
+                    <li><strong>Steps</strong>:
+                        <ol>
+                            <li>Define a parent class with <code>setClass()</code>.</li>
+                            <li>Define a child class with <code>contains = "ParentClass"</code>.</li>
+                            <li>The child class inherits all slots and methods of the parent.</li>
+                        </ol>
+                    </li>
+                    <li><strong>Example</strong>:<br>
+                        <pre><code># Parent class
+setClass("Person", slots = list(name = "character", age = "numeric"))
+setMethod("show", "Person", function(object) {
+  cat("Name:", object@name, "\n")
+})
+
+# Child class
+setClass("Student", slots = list(grade = "character"), contains = "Person")
+setMethod("show", "Student", function(object) {
+  cat("Student Name:", object@name, "\nGrade:", object@grade, "\n")
+})
+
+s <- new("Student", name = "Alice", age = 20, grade = "A")
+s  # Outputs: Student Name: Alice, Grade: A</code></pre>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>15. b) How to get classes of columns in a data frame in R.</h3>
+                <p>Use <code>sapply()</code> or <code>lapply()</code> with <code>class()</code> to get the class of each column in a data frame.</p>
+                <p><strong>Example</strong>:</p>
+                <pre><code># Create a data frame
+df <- data.frame(
+  name = c("Alice", "Bob"),
+  age = c(25, 30),
+  active = c(TRUE, FALSE)
+)
+
+# Get classes of columns
+col_classes <- sapply(df, class)
+print(col_classes)
+# Output:
+#      name        age     active 
+# "character"  "numeric"  "logical"</code></pre>
+            </div>
+        </section>
+    </main>
+    <footer>
+         <div class="footer-content">
+       
+            <div class="social-links">
+                <a href="https://github.com/Sudarshanbadli" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/sudarshan_badli?t=4rxkwhdm80fYCRGuyv-nSg&s=09" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://codepen.io/Sudarshan-Badli" target="_blank" aria-label="Codepen"><i class="fab fa-codepen"></i></a>
+                 <a href="https://www.instagram.com/sudarshanbadli_7?igsh=azU0MDVibTB5bWFo" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          
+   
+        <p><p>&copy; 2025 Sudarshan Badli. All rights reserved.</p>
+                    
+            <p class="mt-2">Made with ❤️ and <i class="fas fa-code text-white-500"></i></p>
+        </div>
+    </footer>
+    <script src="unit.js"></script>
+</body>
+</html>

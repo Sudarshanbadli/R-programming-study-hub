@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#6e8efb">
+    <title>R Programming: Study Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <!-- Welcome Modal -->
+    <div id="welcome-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" role="button" aria-label="Close modal">×</span>
+            <h2>Welcome to R Programming Study Hub</h2>
+            <p>Explore comprehensive notes and examples for R programming and statistics, designed for exam success!</p>
+            <a href="#r-intro" class="cta-button">Start Learning</a>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <h1>R Programming Study Hub</h1>
+            <p>Your ultimate resource for mastering R programming and statistics</p>
+            <button id="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        <div class="wave-container">
+            <svg class="wave wave1" viewBox="0 0 1440 320">
+                <path fill="#6e8efb" fill-opacity="0.8" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,128C672,107,768,117,864,138.7C960,160,1056,192,1152,192C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,0,320Z"></path>
+            </svg>
+            <svg class="wave wave2" viewBox="0 0 1440 320">
+                <path fill="#a777e3" fill-opacity="0.6" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,106.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,0,320Z"></path>
+            </svg>
+            <svg class="wave wave3" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="0.4" d="M0,128L48,144C96,160,192,192,288,181.3C384,171,480,117,576,90.7C672,64,768,64,864,85.3C960,107,1056,149,1152,160C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,0,320Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <button id="sidebar-toggle" aria-label="Toggle sidebar"><i class="fas fa-bars"></i></button>
+        <ul>
+            <li><a href="#r-intro">Introduction</a></li>
+            <li><a href="#units">All Units</a></li>
+            <li><a href="unit1/unit1.html">Unit 1</a></li>
+            <li><a href="unit2/unit2.html">Unit 2</a></li>
+            <li><a href="unit3/unit3.html">Unit 3</a></li>
+            <li><a href="unit4/unit4.html">Unit 4</a></li>
+            <li><a href="unit5/unit5.html">Unit 5</a></li>
+            <li><a href="unit6/unit6.html">Unit 6</a></li>
+            <li><a href="unit7/unit7.html">Unit 7</a></li> 
+       
+        </ul>
+    </div>
+
+    <main>
+        <section id="r-intro">
+            <h2>Introduction to R Programming</h2>
+            <div class="intro-content">
+                <p>R is a powerful open-source programming language for statistical computing and data visualization. It's widely used for data analysis, machine learning, and academic research. Below are key concepts to get started with R:</p>
+                <ul>
+                    <li><strong>Variables</strong>: Store data using <code>&lt;-</code> or <code>=</code>.</li>
+                    <li><strong>Data Structures</strong>: Vectors, matrices, data frames, and lists.</li>
+                    <li><strong>Functions</strong>: Built-in or user-defined for reusable code.</li>
+                    <li><strong>Packages</strong>: Extend R's functionality (e.g., <code>ggplot2</code>, <code>dplyr</code>).</li>
+                </ul>
+                <h3>Example: Basic R Operations</h3>
+                <pre><code># Create a vector
+numbers <- c(1, 2, 3, 4, 5)
+
+# Calculate mean and plot
+mean_value <- mean(numbers)
+plot(numbers, type = "l", col = "blue", main = "Simple Line Plot", xlab = "Index", ylab = "Value")
+# Output: Mean = 3
+</code></pre>
+                <p>Explore the units below to dive deeper into R programming and statistics!</p>
+            </div>
+        </section>
+        <section id="units">
+            <h2>Explore Our Units</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="basics">Basics</button>
+                <button class="filter-btn" data-category="graphics">Graphics</button>
+                <button class="filter-btn" data-category="statistics">Statistics</button>
+            </div>
+            <div class="card-container">
+                <a href="unit1.html" class="card" data-category="basics">
+                    <div class="card-front">
+                        <i class="fas fa-code"></i>
+                        <h3>Introduction to R</h3>
+                        <p>Learn the basics of R programming, syntax, and data structures.</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3>Unit 1 Overview</h3>
+                        <p>Start your R journey with variables, loops, and basic operations.</p>
+                    </div>
+                </a>
+                <a href="unit2.html" class="card" data-category="basics">
+                    <div class="card-front">
+                        <i class="fas fa-database"></i>
+                        <h3>Control Structures and Vectors</h3>
+                        <p>Explore data frames, filtering, and data wrangling in R.</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3>Unit 2 Overview</h3>
+                        <p>Master data cleaning and transformation techniques.Control Structures and Vectors</p>
+                    </div>
+                </a>
+                <a href="unit3.html" class="card" data-category="statistics">
+                    <div class="card-front">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>  lists in R and more.</h3>
+                        <p>Understand core statistical concepts and their R implementations and lists</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 50%;"></div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3>Unit 3 Overview</h3>
+                        <p>Learn descriptive and inferential statistics in R.and lists</p>
+                    </div>
+                </a>
+                <a href="unit4.html" class="card" data-category="graphics">
+                    <div class="card-front">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Factos and Tables</h3>
+                        <p>Master advanced plotting techniques and visualizations. with Factors and Tables</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3>Unit 4 Overview</h3>
+                        <p>Create stunning visualizations with ggplot2 and more. Factos And tables</p>
+                    </div>
+                </a>
+                <a href="unit5.html" class="card" data-category="basics">
+                    <div class="card-front">
+                        <i class="fas fa-cogs"></i>
+                        <h3> Object-oriented programming </h3>
+                        <p>Dive into functions, loops, and advanced R techniques.and oops concept</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 40%;"></div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3>Unit 5 Overview</h3>
+                        <p>Build complex R programs with advanced techniques. and oops concepts</p>
+                    </div>
+                </a>
+                <a href="unit6.html" class="card" data-category="statistics">
+                    <div class="card-front">
+                        <i class="fas fa-calculator"></i>
+                        <h3>Grapics and Graphs</h3>
+                        <p>Exploretypes of graps charts graphics and their statistical applications.</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3>Unit 6 Overview</h3>
+                        <p>Understand logs in data analysis and modeling. and graps</p>
+                    </div>
+                </a>
+                <a href="unit7.html" class="card" data-category="graphics">
+                    <div class="card-front">
+                        <i class="fas fa-chart-pie"></i>
+                        <h3>Statistics & Descriptive analysis</h3>
+                        <p>Learn plotting and basic statistical measures in R.Master T-tests, ANOVA, regression, and more in R.</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3>Unit 7 Overview</h3>
+                        <p>Create scatterplots, bar plots, and pie charts.Master T-tests, ANOVA, regression, and more in R.</p>
+                    </div>
+                </a>
+                   <a href="qp.html" class="card" data-category="graphics">
+                    <div class="card-front">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Solved Questions paper </h3>
+                        <p> VI Semester B.Sc. 6 (NEP) Degree Examination, May/June - 2025</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3>Solved paper Overview</h3>
+                        <p>VI Semester B.Sc. 6 (NEP) Degree Examination, May/June - 2025</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Back-to-Top Button -->
+    <button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+    <footer>
+        <div class="footer-content">
+       
+            <div class="social-links">
+                <a href="https://github.com/Sudarshanbadli" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/sudarshan_badli?t=4rxkwhdm80fYCRGuyv-nSg&s=09" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://codepen.io/Sudarshan-Badli" target="_blank" aria-label="Codepen"><i class="fab fa-codepen"></i></a>
+                 <a href="https://www.instagram.com/sudarshanbadli_7?igsh=azU0MDVibTB5bWFo" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          
+   
+        <p><p>&copy; 2025 Sudarshan Badli. All rights reserved.</p>
+                    
+            <p class="mt-2">Made with ❤️ and <i class="fas fa-code text-white-500"></i></p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
