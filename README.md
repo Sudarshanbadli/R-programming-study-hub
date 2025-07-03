@@ -90,8 +90,8 @@ Optional: Local server (like Live Server extension)
 
 🧩 Setup
 
-git clone https://github.com/your-username/r-programming-study-hub.git
-cd r-programming-study-hub
+git clone https://github.com/sudarshanbadli/R-programming-study-hub.git
+cd R-programming-study-hub
 
 Ensure these files are present:
 
