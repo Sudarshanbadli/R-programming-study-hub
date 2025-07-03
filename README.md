@@ -73,7 +73,7 @@ ARIA + keyboard navigation for accessibility ♿
 🔗 Live Demo
 
 🔴 View Demo
-[click here 👉]()
+[click here 👉](https://sudarshanbadli.github.io/R-programming-study-hub/)
 
 ---
 
@@ -264,7 +264,9 @@ Feel free to fork, remix, and use for educational purposes. 🎓
 📬 Contact
 
 📂 GitHub: https://github.com/Sudarshanbadli
+
 📧 Email:sudarshanbadli7@gmail.com
+
 🐦 Twitter: https://x.com/sudarshan_badli?t=C3uc_9XAos2Eg_2ka2cQNw&s=09
 
 
